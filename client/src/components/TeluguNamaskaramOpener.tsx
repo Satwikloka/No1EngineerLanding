@@ -5,7 +5,8 @@ interface WelcomeOpenerProps {
   onComplete: () => void;
 }
 
-export default function WelcomeOpener({ onComplete }: WelcomeOpenerProps) {
+// Renamed component to avoid confusion with TeluguNamaskaramOpener
+export default function EnglishWelcomeOpener({ onComplete }: WelcomeOpenerProps) {
   const [stage, setStage] = useState(0);
   
   useEffect(() => {

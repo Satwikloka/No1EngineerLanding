@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export default function TeluguNamaskaramAnimation() {
+export default function WelcomeAnimation() {
   return (
     <div className="flex items-center">
       <motion.div 
@@ -10,14 +10,14 @@ export default function TeluguNamaskaramAnimation() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        {/* Animated Telugu Text */}
+        {/* Animated Welcome Text */}
         <motion.div
           className="flex items-center"
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          <span className="font-telugu text-xl text-[#00A19C] mr-2">నమస్కారం</span>
+          <span className="text-xl text-[#00A19C] mr-2">Hello</span>
         </motion.div>
         
         {/* Paint Splash Effect */}

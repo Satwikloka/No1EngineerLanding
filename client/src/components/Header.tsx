@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import TeluguNamaskaramAnimation from "./TeluguNamaskaramAnimation";
+import WelcomeAnimation from "./TeluguNamaskaramAnimation";
 
 interface NavItem {
   label: string;
@@ -9,11 +9,11 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: "గురించి", href: "#about" },
-  { label: "వర్క్‌ఫ్లో", href: "#workflow" },
-  { label: "సేవలు", href: "#services" },
-  { label: "ఫీచర్స్", href: "#features" },
-  { label: "సంప్రదించండి", href: "#contact" },
+  { label: "About", href: "#about" },
+  { label: "Workflow", href: "#workflow" },
+  { label: "Services", href: "#services" },
+  { label: "Features", href: "#features" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Header() {
@@ -75,7 +75,7 @@ export default function Header() {
             transition={{ duration: 0.5 }}
           >
             <div className="max-w-7xl mx-auto flex justify-center items-center">
-              <TeluguNamaskaramAnimation />
+              <WelcomeAnimation />
             </div>
           </motion.div>
         )}
@@ -84,7 +84,7 @@ export default function Header() {
       <div className="section-container py-4">
         <nav className="flex items-center justify-between">
           <a href="#" className="flex items-center">
-            <span className="text-2xl font-bold font-telugu text-black tracking-tighter">
+            <span className="text-2xl font-bold text-black tracking-tighter">
               no1.engineer
             </span>
           </a>
@@ -95,7 +95,7 @@ export default function Header() {
               <li key={index}>
                 <a
                   href={item.href}
-                  className="text-black hover:opacity-60 transition-opacity font-telugu"
+                  className="text-black hover:opacity-60 transition-opacity"
                 >
                   {item.label}
                 </a>
@@ -133,7 +133,7 @@ export default function Header() {
                 <li key={index}>
                   <a
                     href={item.href}
-                    className="block text-black hover:opacity-60 font-telugu text-lg"
+                    className="block text-black hover:opacity-60 text-lg"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.label}
