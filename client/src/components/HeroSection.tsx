@@ -866,18 +866,18 @@ export default function HeroSection() {
               transition={{ duration: 0.8 }}
               className="mb-8"
             >
-              <span className="px-4 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-purple-500 to-orange-400 text-white inline-block mb-6">
-                The No.1 Engineer
+              <span className="px-4 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-[#FF8000] to-[#0090D4] text-white inline-block mb-6 shadow-md">
+                SATWIK LOKA | THE NO.1 ENGINEER
               </span>
               
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 decoration-line">
-                Transforming Business <br/>
-                <span className="title-lg">Through Digital Innovation</span>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 decoration-line">
+                Expert Development <br/>
+                <span className="title-lg">For Digital Excellence</span>
               </h1>
               
               <p className="text-lg md:text-xl text-slate-600 max-w-lg">
-                Global tech solutions with cultural roots in <span className="font-telugu">తెలుగు</span> engineering excellence. 
-                Bringing world-class digital nomad expertise to your projects.
+                Premium app and web development with a personal touch. 
+                From in-person client meetings to world-class remote delivery.
               </p>
             </motion.div>
             
@@ -927,20 +927,120 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
           
-          {/* 3D Animation */}
+          {/* Hero image/illustration */}
           <motion.div
-            className="relative h-[600px] perspective-container"
+            className="relative h-[600px] flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <DigitalNomadJourneyAnimation />
+            {/* Professional image with McLaren-style branding */}
+            <motion.div 
+              className="relative w-[450px] h-[450px] rounded-3xl shadow-2xl overflow-hidden"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.4 }}
+            >
+              {/* Stylized background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A] to-[#334155]"></div>
+              
+              {/* Abstract pattern */}
+              <div className="absolute inset-0">
+                <svg width="100%" height="100%" viewBox="0 0 600 600" fill="none">
+                  <g opacity="0.2">
+                    <path d="M0,0 L600,0 L600,600 L0,600 Z" fill="url(#grid-pattern)" />
+                    <path d="M300,150 C350,150 400,250 400,300 S350,450 300,450 S200,350 200,300 S250,150 300,150 Z" 
+                          fill="none" stroke="#FF8000" strokeWidth="2" strokeDasharray="4,4" />
+                    <path d="M200,100 C400,150 450,350 350,450 S100,400 100,250 S200,100 200,100 Z" 
+                          fill="none" stroke="#0090D4" strokeWidth="2" strokeDasharray="4,4" opacity="0.5" />
+                  </g>
+                  <defs>
+                    <pattern id="grid-pattern" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(45)">
+                      <rect width="2" height="2" fill="white" />
+                    </pattern>
+                  </defs>
+                </svg>
+              </div>
+              
+              {/* Orange racing stripe - McLaren papaya */}
+              <div className="absolute h-full w-16 left-16 top-0 bg-[#FF8000] opacity-60"></div>
+              
+              {/* Business journey representation */}
+              <div className="absolute left-1/2 bottom-20 -translate-x-1/2">
+                {/* Business person silhouette */}
+                <div className="relative flex flex-col items-center">
+                  {/* Circular glow */}
+                  <div className="absolute bottom-10 w-40 h-40 rounded-full bg-[#FF8000] opacity-20 filter blur-xl"></div>
+                  
+                  {/* Business icon */}
+                  <motion.div 
+                    className="relative z-10 text-white mb-8"
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                  >
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+                    </svg>
+                  </motion.div>
+                  
+                  {/* Stylized text */}
+                  <div className="text-white text-center">
+                    <motion.div 
+                      className="text-xl font-bold mb-2"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      The No.1 Engineer
+                    </motion.div>
+                    <motion.div 
+                      className="text-sm text-gray-300"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.7 }}
+                    >
+                      Expert Digital Solutions
+                    </motion.div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Branding accent - McLaren blue */}
+              <div className="absolute left-0 bottom-0 h-12 w-full bg-[#0090D4] opacity-40"></div>
+              
+              {/* Tech icons */}
+              <div className="absolute top-20 right-24">
+                <motion.div 
+                  className="flex gap-5"
+                  animate={{ y: [0, 5, 0] }}
+                  transition={{ duration: 6, repeat: Infinity }}
+                >
+                  {["#FF8000", "#0090D4", "#FFFFFF"].map((color, i) => (
+                    <motion.div 
+                      key={i}
+                      className="w-6 h-6 rounded-full"
+                      style={{ backgroundColor: color, opacity: 0.8 }}
+                      whileHover={{ scale: 1.2, opacity: 1 }}
+                      animate={{ 
+                        scale: [1, 1.1, 1],
+                        opacity: [0.8, 1, 0.8]
+                      }}
+                      transition={{ 
+                        duration: 2, 
+                        delay: i * 0.4,
+                        repeat: Infinity, 
+                        repeatType: "reverse" 
+                      }}
+                    />
+                  ))}
+                </motion.div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
         
-        {/* Engineering Journey Timeline */}
+        {/* Digital Nomad Animation Showcase - Full Section */}
         <motion.div 
-          id="engineering-journey"
+          id="journey-animation"
           className="mt-32 relative"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -948,35 +1048,23 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
         >
           <div className="text-center mb-16">
-            <h2 className="title-md mb-4">Engineering Journey</h2>
+            <h2 className="title-md mb-4">My Digital Nomad Journey</h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              From ancient Indian engineering wisdom to modern digital nomad solutions, our approach combines 
-              timeless principles with cutting-edge technology.
+              Experience my unique business approach: Personal visits for gathering requirements, 
+              and remote delivery of high-quality solutions with world-class development expertise.
             </p>
           </div>
           
-          <div className="relative grid md:grid-cols-5 gap-6">
-            {/* Timeline line */}
-            <div className="absolute top-1/4 left-0 right-0 h-0.5 bg-gradient-to-r from-[#7C3AED] to-[#EA580C] opacity-20 hidden md:block"></div>
+          <div className="relative w-full">
+            {/* Full display of journey animation */}
+            <div className="h-[600px] perspective-container mx-auto max-w-5xl">
+              <DigitalNomadJourneyAnimation />
+            </div>
             
-            {engineeringMilestones.map((milestone, index) => (
-              <motion.div 
-                key={index}
-                className="card-glass flex flex-col items-center text-center space-y-4 hover-lift relative z-10"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className="absolute -top-6 w-12 h-12 rounded-full bg-gradient-to-br from-[#7C3AED] to-[#EA580C] flex items-center justify-center shadow-lg">
-                  {milestone.icon}
-                </div>
-                
-                <h3 className="text-xl font-semibold mt-6">{milestone.title}</h3>
-                <div className="text-sm font-medium text-[#7C3AED]">{milestone.year}</div>
-                <p className="text-sm text-slate-600">{milestone.description}</p>
-              </motion.div>
-            ))}
+            {/* Instruction text */}
+            <div className="text-center mt-6 text-slate-500 text-sm">
+              Move your mouse from left to right to explore each phase of my business journey ⟵⟶
+            </div>
           </div>
         </motion.div>
         
@@ -992,45 +1080,42 @@ export default function HeroSection() {
             className="card-glass flex flex-col space-y-4 group" 
             whileHover={{ y: -10, transition: { duration: 0.3 } }}
           >
-            <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#7C3AED] to-[#A78BFA] flex items-center justify-center text-white mb-4">
+            <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#FF8000] to-[#FF9D45] flex items-center justify-center text-white mb-4 shadow-lg shadow-orange-200">
               <Code className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-semibold">Tech Nomad</h3>
-            <p className="text-slate-600">Working in global markets while utilizing local cultural expertise and insights</p>
-            <a href="#services" className="flex items-center space-x-2 text-[#7C3AED] text-sm group-hover:translate-x-1 transition-all">
-              <span>Learn more</span>
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            <h3 className="text-lg font-semibold">Tech Expert</h3>
+            <p className="text-slate-600">Bringing global tech expertise to local markets with personalized solutions</p>
+            <div className="flex items-center space-x-2 text-[#FF8000] text-sm transition-all">
+              <span className="font-medium">App Development</span>
+            </div>
           </motion.div>
           
           <motion.div 
             className="card-glass flex flex-col space-y-4 group" 
             whileHover={{ y: -10, transition: { duration: 0.3 } }}
           >
-            <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#EA580C] to-[#FB923C] flex items-center justify-center text-white mb-4">
+            <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#0090D4] to-[#60B6E1] flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-200">
               <Share2 className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-semibold">Cultural Connection</h3>
-            <p className="text-slate-600">Integrating Telugu culture and traditions into modern technology solutions</p>
-            <a href="#services" className="flex items-center space-x-2 text-[#EA580C] text-sm group-hover:translate-x-1 transition-all">
-              <span>Learn more</span>
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            <h3 className="text-lg font-semibold">Personal Consultation</h3>
+            <p className="text-slate-600">Meeting clients in person to understand requirements before delivering remotely</p>
+            <div className="flex items-center space-x-2 text-[#0090D4] text-sm transition-all">
+              <span className="font-medium">Digital Solutions</span>
+            </div>
           </motion.div>
           
           <motion.div 
             className="card-glass flex flex-col space-y-4 group" 
             whileHover={{ y: -10, transition: { duration: 0.3 } }}
           >
-            <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#5EEAD4] to-[#99F6E4] flex items-center justify-center text-white mb-4">
+            <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-slate-700 to-slate-800 flex items-center justify-center text-white mb-4 shadow-lg shadow-slate-200">
               <Globe className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-semibold">Global Innovation</h3>
-            <p className="text-slate-600">Advancing Indian engineering heritage with modern digital solutions for worldwide impact</p>
-            <a href="#services" className="flex items-center space-x-2 text-[#0D9488] text-sm group-hover:translate-x-1 transition-all">
-              <span>Learn more</span>
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            <h3 className="text-lg font-semibold">Global Delivery</h3>
+            <p className="text-slate-600">Providing premium development services with world-class expertise and rapid delivery</p>
+            <div className="flex items-center space-x-2 text-slate-700 text-sm transition-all">
+              <span className="font-medium">Web & Mobile Development</span>
+            </div>
           </motion.div>
         </motion.div>
         

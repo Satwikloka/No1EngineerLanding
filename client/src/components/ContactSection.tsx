@@ -107,7 +107,11 @@ function ContactForm() {
               <FormControl>
                 <Input 
                   placeholder="ఏ విషయంలో మేము సహాయపడగలము?" 
-                  {...field} 
+                  onChange={field.onChange}
+                  onBlur={field.onBlur}
+                  name={field.name}
+                  value={field.value ?? ''}
+                  ref={field.ref}
                   className="border-black focus:border-black focus:ring-0 rounded-none h-12 font-telugu" 
                 />
               </FormControl>
@@ -126,7 +130,11 @@ function ContactForm() {
                 <Textarea 
                   placeholder="మీ ప్రాజెక్ట్, అవసరాలు మరియు టైమ్‌లైన్ గురించి మాకు మరింత చెప్పండి" 
                   className="resize-none border-black focus:border-black focus:ring-0 rounded-none min-h-[150px] font-telugu" 
-                  {...field} 
+                  onChange={field.onChange}
+                  onBlur={field.onBlur}
+                  name={field.name}
+                  value={field.value ?? ''}
+                  ref={field.ref}
                 />
               </FormControl>
               <FormMessage className="font-telugu" />
