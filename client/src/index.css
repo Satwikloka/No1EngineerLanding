@@ -1,13 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css');
+@import url('https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 /* Define custom fonts */
 @layer base {
@@ -71,7 +70,7 @@
     @apply py-20 md:py-32 relative;
   }
 
-  /* Mercedes-inspired color palette */
+  /* Color palette */
   :root {
     --color-teal: #00A19C;
     --color-teal-light: #67C7C4;
@@ -85,6 +84,10 @@
     --color-black: #000000;
     --color-slate: #0F172A;
     --color-slate-light: #334155;
+    --color-purple-cream: #9C27B0;
+    --color-orange-cream: #FF9800;
+    --color-deep-purple: #673AB7;
+    --color-orange-deep: #FF5722;
   }
   
   /* Glass effect */
@@ -138,7 +141,7 @@
     -webkit-text-fill-color: transparent;
   }
   
-  /* Mercedes-inspired Buttons */
+  /* Styled Buttons */
   .btn-primary {
     @apply px-6 py-3 rounded-md transition-all duration-300 shadow-lg;
     background: linear-gradient(135deg, var(--color-teal), var(--color-teal-light));

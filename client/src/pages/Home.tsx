@@ -8,7 +8,7 @@ import ContactSection from "@/components/ContactSection";
 import NewsletterSection from "@/components/NewsletterSection";
 import Footer from "@/components/Footer";
 import InteractiveWorkflow from "@/components/InteractiveWorkflow";
-import McLarenJourneyAnimation from "@/components/McLarenJourneyAnimation";
+import InstagramReelsCarousel from "@/components/InstagramReelsCarousel";
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Info, X } from "lucide-react";
@@ -82,7 +82,7 @@ export default function Home() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-2 text-[#00A19C]">Interactive Development Journey</h2>
           <p className="text-base md:text-lg max-w-3xl mx-auto text-gray-600 dark:text-gray-400">
-            Experience the Mercedes-inspired precision engineering process that powers our software delivery pipeline. Interact with the workflow to see how we bring your ideas to life.
+            Experience our precision engineering process that powers our software delivery pipeline. Interact with the workflow to see how we bring your ideas to life.
           </p>
         </motion.div>
         
@@ -129,6 +129,10 @@ export default function Home() {
       <AboutSection />
       <FeaturesSection />
       <ServicesSection />
+      
+      {/* Instagram Reels Carousel */}
+      <InstagramReelsCarousel />
+      
       <TestimonialsSection />
       <ContactSection />
       <NewsletterSection />
