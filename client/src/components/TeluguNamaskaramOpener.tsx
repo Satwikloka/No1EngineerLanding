@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface TeluguNamaskaramOpenerProps {
+interface WelcomeOpenerProps {
   onComplete: () => void;
 }
 
-export default function TeluguNamaskaramOpener({ onComplete }: TeluguNamaskaramOpenerProps) {
+export default function TeluguNamaskaramOpener({ onComplete }: WelcomeOpenerProps) {
   const [stage, setStage] = useState(0);
   
   useEffect(() => {
@@ -52,11 +52,9 @@ export default function TeluguNamaskaramOpener({ onComplete }: TeluguNamaskaramO
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.5 }}
             >
-              {/* Bold gradient Telugu text */}
               <div className="space-y-2">
                 <motion.h1 
-                  lang="te"
-                  className="font-telugu text-gradient-telugu text-6xl md:text-8xl"
+                  className="text-6xl md:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#00A19C] via-[#7C3AED] to-[#FE7F2D]"
                   style={{
                     backgroundSize: "200% 200%",
                     animationName: "gradient-shift",
@@ -64,18 +62,9 @@ export default function TeluguNamaskaramOpener({ onComplete }: TeluguNamaskaramO
                     animationIterationCount: "infinite"
                   }}
                 >
-                  నమస్కారం
+                  Welcome
                 </motion.h1>
-                <motion.p 
-                  lang="en"
-                  className="text-white text-xl md:text-2xl"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                >
-                  Namaskaram
-                </motion.p>
-                <p className="text-slate-300 text-lg font-cursive pt-2">Welcome to no1.engineer</p>
+                <p className="text-slate-300 text-lg pt-2">to no1.engineer</p>
               </div>
             </motion.div>
           )}
@@ -88,7 +77,6 @@ export default function TeluguNamaskaramOpener({ onComplete }: TeluguNamaskaramO
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              {/* Telugu text with divine rays */}
               <div className="relative">
                 {/* Light rays */}
                 <div className="absolute inset-0 -z-10">
@@ -173,11 +161,10 @@ export default function TeluguNamaskaramOpener({ onComplete }: TeluguNamaskaramO
                   ))}
                 </div>
                 
-                {/* Glowing Telugu text */}
+                {/* Glowing welcome text */}
                 <div className="flex flex-col items-center">
                   <motion.h1 
-                    lang="te"
-                    className="font-telugu text-gradient-telugu text-7xl md:text-9xl mb-2 relative"
+                    className="text-7xl md:text-9xl mb-2 relative font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#00A19C] via-[#7C3AED] to-[#FE7F2D]"
                     style={{ 
                       textShadow: "0 0 15px rgba(0,161,156,0.5), 0 0 30px rgba(124,58,237,0.3)"
                     }}
@@ -191,29 +178,19 @@ export default function TeluguNamaskaramOpener({ onComplete }: TeluguNamaskaramO
                     }}
                     transition={{ duration: 3, repeat: 1, repeatType: "mirror" }}
                   >
-                    నమస్కారం
+                    Welcome
                   </motion.h1>
-                  
-                  <motion.p 
-                    lang="en"
-                    className="text-white text-2xl md:text-3xl"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 1 }}
-                  >
-                    Namaskaram
-                  </motion.p>
                 </div>
               </div>
               
               {/* Welcome message */}
               <motion.p 
-                className="text-white text-xl md:text-2xl font-cursive"
+                className="text-white text-xl md:text-2xl"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 1 }}
               >
-                Welcome to the world of engineering excellence
+                to the world of engineering excellence
               </motion.p>
             </motion.div>
           )}
@@ -227,9 +204,8 @@ export default function TeluguNamaskaramOpener({ onComplete }: TeluguNamaskaramO
               transition={{ duration: 1.5 }}
             >
               <div className="space-y-2">
-                <h1 lang="te" className="font-telugu text-gradient-telugu text-7xl md:text-9xl">నమస్కారం</h1>
-                <p lang="en" className="text-white text-2xl md:text-3xl">Namaskaram</p>
-                <p lang="en" className="text-white text-xl md:text-2xl font-cursive mt-4">Welcome to the world of engineering excellence</p>
+                <h1 className="text-7xl md:text-9xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#00A19C] via-[#7C3AED] to-[#FE7F2D]">Welcome</h1>
+                <p className="text-white text-xl md:text-2xl mt-4">to the world of engineering excellence</p>
               </div>
             </motion.div>
           )}

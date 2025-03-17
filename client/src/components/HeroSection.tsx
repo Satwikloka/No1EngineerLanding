@@ -50,30 +50,24 @@ export default function HeroSection() {
     animationDuration: Math.random() * 5 + 3,
   }));
   
-  // Feature icons with modern animation and Telugu translations for SEO
+  // Feature icons with modern animation
   const features = [
     { 
       icon: <Code className="w-5 h-5" />, 
       title: "Custom App Development", 
       description: "Build tailored solutions that perfectly align with your business needs",
-      teluguTitle: "కస్టమ్ యాప్ డెవలప్‌మెంట్",
-      teluguDescription: "మీ వ్యాపార అవసరాలకు సరిగ్గా సరిపోయే అనుకూల పరిష్కారాలను నిర్మించండి",
       color: "#00A19C"
     },
     { 
       icon: <Smartphone className="w-5 h-5" />, 
       title: "Mobile & Web Design", 
       description: "Create seamless experiences across all devices and platforms",
-      teluguTitle: "మొబైల్ & వెబ్ డిజైన్",
-      teluguDescription: "అన్ని పరికరాలు మరియు ప్లాట్‌ఫారమ్‌లలో సజావుగా అనుభవాలను సృష్టించండి",
       color: "#7038FF" 
     },
     { 
       icon: <Globe className="w-5 h-5" />, 
       title: "Marketing & Analytics", 
       description: "Reach your target audience and measure performance",
-      teluguTitle: "మార్కెటింగ్ & అనలిటిక్స్",
-      teluguDescription: "మీ లక్ష్య ప్రేక్షకులను చేరుకోండి మరియు పనితీరును కొలవండి",
       color: "#FE7F2D" 
     }
   ];
@@ -197,9 +191,9 @@ export default function HeroSection() {
           >
             <p className="text-xl md:text-2xl text-gray-300 mb-8">
               <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#00A19C] to-[#7C3AED]">
-                Telugu-English
+                Premium
               </span>{" "}
-              bilingual digital engineering solutions that transform your business
+              digital engineering solutions that transform your business
             </p>
             
             <div className="flex flex-wrap justify-center gap-4">
@@ -263,12 +257,10 @@ export default function HeroSection() {
                 </div>
                 
                 <h3 className="text-xl font-semibold mb-2">
-                  <span lang="en">{feature.title}</span>
-                  <span lang="te" className="sr-only">{feature.teluguTitle}</span>
+                  {feature.title}
                 </h3>
                 <p className="text-gray-400">
-                  <span lang="en">{feature.description}</span>
-                  <span lang="te" className="sr-only">{feature.teluguDescription}</span>
+                  {feature.description}
                 </p>
               </div>
               
