@@ -300,6 +300,147 @@
     100% { background-position: 0% 50%; }
   }
   
+  /* Mascot Animation Classes */
+  .animate-happy-eyes {
+    animation: happy-eyes 1s ease-in-out;
+  }
+  
+  .animate-excited-eyes {
+    animation: excited-eyes 0.5s ease-in-out infinite;
+  }
+  
+  .animate-thinking-eyes {
+    animation: thinking-eyes 2s ease-in-out;
+  }
+  
+  .animate-surprised-eyes {
+    animation: surprised-eyes 0.8s ease-in-out;
+  }
+  
+  .animate-happy-mouth {
+    animation: happy-mouth 1s ease-in-out;
+  }
+  
+  .animate-excited-mouth {
+    animation: excited-mouth 0.5s ease-in-out infinite;
+  }
+  
+  .animate-thinking-mouth {
+    animation: thinking-mouth 2s ease-in-out;
+  }
+  
+  .animate-surprised-mouth {
+    animation: surprised-mouth 0.8s ease-in-out;
+  }
+  
+  .animate-happy-head {
+    animation: happy-head 1s ease-in-out;
+  }
+  
+  .animate-excited-head {
+    animation: excited-head 0.5s ease-in-out infinite;
+  }
+  
+  .animate-thinking-head {
+    animation: thinking-head 2s ease-in-out;
+  }
+  
+  .animate-surprised-head {
+    animation: surprised-head 0.8s ease-in-out;
+  }
+  
+  .animate-thumbsup-head {
+    animation: thumbsup-head 1s ease-in-out;
+  }
+  
+  @keyframes happy-eyes {
+    0% { transform: scaleY(1); }
+    50% { transform: scaleY(0.3); }
+    100% { transform: scaleY(1); }
+  }
+  
+  @keyframes excited-eyes {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes thinking-eyes {
+    0% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-2px) rotate(-5deg); }
+    50% { transform: translateY(0) rotate(0deg); }
+    75% { transform: translateY(-2px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+  }
+  
+  @keyframes surprised-eyes {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes happy-mouth {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2, 0.8); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes excited-mouth {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+    100% { transform: translateY(0); }
+  }
+  
+  @keyframes thinking-mouth {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+  }
+  
+  @keyframes surprised-mouth {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.8, 1.5); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes happy-head {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(5deg); }
+    100% { transform: rotate(0deg); }
+  }
+  
+  @keyframes excited-head {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+  }
+  
+  @keyframes thinking-head {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+    100% { transform: rotate(0deg); }
+  }
+  
+  @keyframes surprised-head {
+    0% { transform: scale(1); }
+    10% { transform: scale(1.1); }
+    30% { transform: scale(0.9); }
+    50% { transform: scale(1.05); }
+    70% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes thumbsup-head {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(10deg); }
+    100% { transform: rotate(0deg); }
+  }
+  
   /* Stylish scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
