@@ -17,7 +17,7 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code, Smartphone, Laptop, Package, Rocket, Globe, Lightbulb, PenTool, Cpu, X, CheckCircle, MousePointer, MousePointerClick } from 'lucide-react';
+import { Code, Smartphone, Laptop, Package, Rocket, Globe, Lightbulb, PenTool, Cpu, X, CheckCircle, MousePointer, MousePointerClick, BarChart, PieChart, Brain, Share2, TrendingUp, Target } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as Tooltip from '@radix-ui/react-tooltip';
 
@@ -59,8 +59,8 @@ function NodeDetailsDialog({ open, onOpenChange, data }: {
               {data.label === 'Ideation' && <Lightbulb className="w-5 h-5 text-white" />}
               {data.label === 'Design' && <PenTool className="w-5 h-5 text-white" />}
               {data.label === 'Development' && <Code className="w-5 h-5 text-white" />}
-              {data.label === 'Testing' && <Cpu className="w-5 h-5 text-white" />}
-              {data.label === 'Deployment' && <Rocket className="w-5 h-5 text-white" />}
+              {data.label === 'Marketing' && <TrendingUp className="w-5 h-5 text-white" />}
+              {data.label === 'AI Sales Campaign' && <Brain className="w-5 h-5 text-white" />}
             </div>
             <Dialog.Title className="text-xl font-bold text-white">{data.label}</Dialog.Title>
             <Dialog.Close className="absolute top-4 right-4 text-gray-400 hover:text-white">
@@ -386,7 +386,7 @@ function DevelopNode({ data }: { data: NodeData }) {
   );
 }
 
-function TestNode({ data }: { data: NodeData }) {
+function MarketingNode({ data }: { data: NodeData }) {
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState(false);
   
@@ -428,7 +428,7 @@ function TestNode({ data }: { data: NodeData }) {
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
               <div className="bg-[#00A19C] w-8 h-8 rounded-full flex items-center justify-center">
-                <Cpu className="w-4 h-4 text-white" />
+                <TrendingUp className="w-4 h-4 text-white" />
               </div>
               <h3 className="text-white font-bold">{data.label}</h3>
             </div>
@@ -440,21 +440,21 @@ function TestNode({ data }: { data: NodeData }) {
               animate={{ rotate: [-5, 5, -5] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <Smartphone className="w-4 h-4 text-[#333333]" />
+              <BarChart className="w-4 h-4 text-[#333333]" />
             </motion.div>
             <motion.div 
               className="bg-[#111] w-12 h-8 border border-[#333] rounded flex items-center justify-center"
               animate={{ y: [-2, 2, -2] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <Laptop className="w-5 h-5 text-[#00A19C]" />
+              <Share2 className="w-5 h-5 text-[#00A19C]" />
             </motion.div>
             <motion.div 
               className="bg-[#111] w-8 h-8 border border-[#333] rounded-full flex items-center justify-center"
               animate={{ scale: [1, 1.1, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
-              <Globe className="w-4 h-4 text-[#333333]" />
+              <Target className="w-4 h-4 text-[#333333]" />
             </motion.div>
           </div>
         </motion.div>
@@ -465,7 +465,7 @@ function TestNode({ data }: { data: NodeData }) {
   );
 }
 
-function DeployNode({ data }: { data: NodeData }) {
+function AISalesCampaignNode({ data }: { data: NodeData }) {
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState(false);
   
@@ -507,44 +507,82 @@ function DeployNode({ data }: { data: NodeData }) {
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
               <div className="bg-[#00A19C] w-8 h-8 rounded-full flex items-center justify-center">
-                <Rocket className="w-4 h-4 text-white" />
+                <Brain className="w-4 h-4 text-white" />
               </div>
               <h3 className="text-white font-bold">{data.label}</h3>
             </div>
           </div>
           <p className="text-gray-400 text-xs">{data.description}</p>
-          <div className="mt-3 relative h-8">
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 bg-[#111] rounded border border-[#333] flex items-center justify-center">
-              <Package className="w-4 h-4 text-[#00A19C]" />
-            </div>
-            
-            <motion.div
-              className="absolute left-10 top-1/2 -translate-y-1/2 w-[80px] h-1"
-              style={{ background: "linear-gradient(90deg, #00A19C, #333333)" }}
-              animate={{
-                width: ["0%", "100%"],
-                x: [0, 10]
+          <div className="mt-3 flex justify-between">
+            <motion.div 
+              className="bg-[#111] w-8 h-8 border border-[#333] rounded-full flex items-center justify-center"
+              animate={{ 
+                rotate: [0, 360],
+                borderColor: ['#333', '#00A19C', '#333']
               }}
-              transition={{ 
-                duration: 1.5, 
-                repeat: Infinity,
-                repeatType: "loop" 
-              }}
-            ></motion.div>
-            
-            <motion.div
-              className="absolute left-12 top-1/2 -translate-y-1/2 flex space-x-4"
-              animate={{ x: [0, 50] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
+              transition={{ duration: 3, repeat: Infinity }}
             >
-              <div className="w-2 h-2 rounded-full bg-[#00A19C]"></div>
-              <div className="w-2 h-2 rounded-full bg-[#333333]"></div>
-              <div className="w-2 h-2 rounded-full bg-[#00A19C]"></div>
+              <Brain className="w-4 h-4 text-[#00A19C]" />
             </motion.div>
             
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 bg-[#111] rounded border border-[#333] flex items-center justify-center">
-              <Globe className="w-4 h-4 text-[#333333]" />
+            <div className="w-[80px] h-8 relative">
+              <motion.div
+                className="absolute w-full h-1 top-1/2 -translate-y-1/2"
+                style={{ background: "linear-gradient(90deg, #00A19C, #333333)" }}
+              />
+              
+              <motion.div
+                className="absolute left-0 top-0 w-full flex justify-between"
+                animate={{ y: [-4, 0, -4] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <motion.div 
+                  className="w-2 h-2 rounded-full bg-[#00A19C]"
+                  animate={{ scale: [1, 1.5, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity, delay: 0 }}
+                />
+                <motion.div 
+                  className="w-2 h-2 rounded-full bg-[#333333]"
+                  animate={{ scale: [1, 1.5, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity, delay: 0.3 }}
+                />
+                <motion.div 
+                  className="w-2 h-2 rounded-full bg-[#00A19C]"
+                  animate={{ scale: [1, 1.5, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity, delay: 0.6 }}
+                />
+              </motion.div>
+              
+              <motion.div
+                className="absolute left-0 bottom-0 w-full flex justify-between"
+                animate={{ y: [4, 0, 4] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <motion.div 
+                  className="w-2 h-2 rounded-full bg-[#333333]"
+                  animate={{ scale: [1, 1.5, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity, delay: 0.9 }}
+                />
+                <motion.div 
+                  className="w-2 h-2 rounded-full bg-[#00A19C]"
+                  animate={{ scale: [1, 1.5, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity, delay: 1.2 }}
+                />
+                <motion.div 
+                  className="w-2 h-2 rounded-full bg-[#333333]"
+                  animate={{ scale: [1, 1.5, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity, delay: 1.5 }}
+                />
+              </motion.div>
             </div>
+            
+            <motion.div 
+              className="bg-[#111] w-8 h-8 border border-[#333] rounded-full flex items-center justify-center"
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              <PieChart className="w-4 h-4 text-[#00A19C]" />
+            </motion.div>
           </div>
         </motion.div>
       </div>
@@ -618,15 +656,15 @@ const initialNodes: Node<NodeData>[] = [
     type: 'testNode',
     position: { x: 700, y: 50 },
     data: {
-      label: 'Testing', 
-      description: 'Multi-Platform QA',
-      details: 'Rigorous testing across devices and platforms ensures your application performs flawlessly. We conduct comprehensive quality assurance to identify and resolve any issues.',
+      label: 'Marketing', 
+      description: 'Strategic Promotion',
+      details: 'Effective marketing strategies that boost your brand visibility and attract your target audience. We create comprehensive marketing plans tailored to your business goals.',
       services: [
-        'Cross-browser Testing',
-        'Mobile Responsiveness',
-        'Performance Testing',
-        'Security Audits',
-        'Usability Testing'
+        'Content Marketing',
+        'Social Media Campaigns',
+        'SEO Optimization',
+        'Email Marketing',
+        'Analytics & Reporting'
       ]
     },
     sourcePosition: Position.Right,
@@ -637,15 +675,15 @@ const initialNodes: Node<NodeData>[] = [
     type: 'deployNode',
     position: { x: 900, y: 100 },
     data: {
-      label: 'Deployment', 
-      description: 'Global Delivery',
-      details: 'The final stage involves deploying your application to production environments with continuous integration practices. We ensure smooth launches and provide ongoing support.',
+      label: 'AI Sales Campaign', 
+      description: 'Intelligent Conversion',
+      details: 'Cutting-edge AI-driven sales strategies that identify potential customers and optimize conversion rates. Our AI tools analyze customer behavior to create personalized approaches.',
       services: [
-        'Cloud Deployment',
-        'Server Configuration',
-        'CI/CD Setup',
-        'Performance Monitoring',
-        'Maintenance & Support'
+        'AI Lead Generation',
+        'Predictive Analytics',
+        'Automated Follow-ups',
+        'Conversion Optimization',
+        'Sales Performance Monitoring'
       ]
     },
     sourcePosition: Position.Right,
@@ -737,8 +775,8 @@ export default function InteractiveWorkflow() {
     ideaNode: IdeaNode,
     designNode: DesignNode,
     developNode: DevelopNode,
-    testNode: TestNode,
-    deployNode: DeployNode
+    testNode: MarketingNode,
+    deployNode: AISalesCampaignNode
   }), []);
   
   // Handle new connections
@@ -805,7 +843,7 @@ export default function InteractiveWorkflow() {
         </div>
       </ReactFlowProvider>
       <div className="text-center text-xs text-gray-500 mt-2">
-        Interact with this Mercedes-AMG inspired workflow diagram to explore the development journey
+        Interact with this workflow diagram to explore the development, marketing, and AI sales journey
       </div>
     </div>
   );
