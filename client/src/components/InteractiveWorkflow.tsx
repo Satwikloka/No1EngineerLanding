@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState, useMemo } from 'react';
+import { useCallback, useRef, useState, useMemo, useEffect } from 'react';
 import ReactFlow, { 
   Background, 
   Controls, 
@@ -16,9 +16,10 @@ import ReactFlow, {
   Handle
 } from 'reactflow';
 import 'reactflow/dist/style.css';
-import { motion } from 'framer-motion';
-import { Code, Smartphone, Laptop, Package, Rocket, Globe, Lightbulb, PenTool, Cpu, X, CheckCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Code, Smartphone, Laptop, Package, Rocket, Globe, Lightbulb, PenTool, Cpu, X, CheckCircle, MousePointer, MousePointerClick } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
+import * as Tooltip from '@radix-ui/react-tooltip';
 
 // Node data interface
 interface NodeData {
@@ -153,9 +154,29 @@ function NodeDetailsDialog({ open, onOpenChange, data }: {
   );
 }
 
+// Node click indicator component for the tooltip
+const NodeClickIndicator = () => {
+  return (
+    <div className="absolute -top-2 -right-2 z-10">
+      <motion.div
+        className="bg-[#00A19C] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
+        initial={{ scale: 0.8, opacity: 0.7 }}
+        animate={{ 
+          scale: [0.8, 1, 0.8],
+          opacity: [0.7, 1, 0.7]
+        }}
+        transition={{ duration: 1.5, repeat: Infinity }}
+      >
+        <MousePointerClick size={10} />
+      </motion.div>
+    </div>
+  );
+};
+
 // Custom node components with handles and dialog trigger
 function IdeaNode({ data }: { data: NodeData }) {
   const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
   
   return (
     <>
@@ -163,12 +184,34 @@ function IdeaNode({ data }: { data: NodeData }) {
         <Handle type="source" position={Position.Right} id="a" style={{ background: '#00A19C', width: 8, height: 8 }} />
         <Handle type="target" position={Position.Left} id="b" style={{ background: '#333333', width: 8, height: 8 }} />
         
+        {/* Clickable indicator */}
+        <NodeClickIndicator />
+        
+        {/* Tooltip that appears on hover */}
+        <AnimatePresence>
+          {hovered && (
+            <motion.div
+              className="absolute -top-10 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none"
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 5 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="bg-[#333] text-white text-xs py-1 px-3 rounded whitespace-nowrap">
+                Click to explore {data.label} services
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        
         <motion.div 
           initial={{ scale: 0.9 }}
           animate={{ scale: 1 }}
           whileHover={{ scale: 1.05, boxShadow: '0 0 15px rgba(0,161,156,0.5)' }}
           className="bg-[#111] rounded-lg border border-[#333] p-4 w-48 cursor-pointer"
           onClick={() => setOpen(true)}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
         >
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
@@ -197,6 +240,7 @@ function IdeaNode({ data }: { data: NodeData }) {
 
 function DesignNode({ data }: { data: NodeData }) {
   const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
   
   return (
     <>
@@ -204,12 +248,34 @@ function DesignNode({ data }: { data: NodeData }) {
         <Handle type="source" position={Position.Right} id="a" style={{ background: '#00A19C', width: 8, height: 8 }} />
         <Handle type="target" position={Position.Left} id="b" style={{ background: '#333333', width: 8, height: 8 }} />
         
+        {/* Clickable indicator */}
+        <NodeClickIndicator />
+        
+        {/* Tooltip that appears on hover */}
+        <AnimatePresence>
+          {hovered && (
+            <motion.div
+              className="absolute -top-10 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none"
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 5 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="bg-[#333] text-white text-xs py-1 px-3 rounded whitespace-nowrap">
+                Click to explore {data.label} services
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        
         <motion.div 
           initial={{ scale: 0.9 }}
           animate={{ scale: 1 }}
           whileHover={{ scale: 1.05, boxShadow: '0 0 15px rgba(0,161,156,0.5)' }}
           className="bg-[#111] rounded-lg border border-[#333] p-4 w-48 cursor-pointer"
           onClick={() => setOpen(true)}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
         >
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
@@ -526,11 +592,76 @@ const initialEdges: Edge[] = [
   { id: 'e4-5', source: '4', target: '5', animated: true, style: { stroke: '#00A19C', strokeWidth: 2 } },
 ];
 
+// Interactive hint component that floats and pulses to guide users
+function InteractionHint() {
+  const [showHint, setShowHint] = useState(true);
+  
+  // Auto-hide the hint after 10 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowHint(false);
+    }, 10000);
+    
+    return () => clearTimeout(timer);
+  }, []);
+  
+  return (
+    <AnimatePresence>
+      {showHint && (
+        <motion.div
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.div 
+            className="bg-[#00A19C]/90 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 max-w-[280px]"
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+          >
+            <MousePointerClick className="w-5 h-5 text-white flex-shrink-0" />
+            <p className="text-sm font-medium">Click any node to explore services and details!</p>
+            <motion.div 
+              className="absolute -top-1 -right-1 w-6 h-6 bg-white rounded-full text-[#00A19C] font-bold flex items-center justify-center cursor-pointer"
+              whileHover={{ scale: 1.1 }}
+              onClick={() => setShowHint(false)}
+            >
+              ×
+            </motion.div>
+          </motion.div>
+          
+          <motion.div 
+            className="w-full h-1 bg-white/50 mt-2 rounded-full overflow-hidden"
+            initial={{ width: "100%" }}
+            animate={{ width: "0%" }}
+            transition={{ duration: 10, ease: "linear" }}
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 export default function InteractiveWorkflow() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const [reactFlowInstance, setReactFlowInstance] = useState<any>(null);
+  const [showHints, setShowHints] = useState(true);
+  
+  // Hide hints after user has interacted with a node
+  useEffect(() => {
+    const hasInteracted = localStorage.getItem('workflow_interacted');
+    if (hasInteracted) {
+      setShowHints(false);
+    }
+    
+    // Mark as interacted after 1 visit to avoid showing hints on every visit
+    return () => {
+      localStorage.setItem('workflow_interacted', 'true');
+    };
+  }, []);
 
   // Define node types - memoize to avoid React Flow warnings
   const nodeTypes = useMemo<NodeTypes>(() => ({
@@ -598,6 +729,9 @@ export default function InteractiveWorkflow() {
               }}
               maskColor="rgba(0, 0, 0, 0.6)"
             />
+            
+            {/* Show interaction hint for first-time visitors */}
+            {showHints && <InteractionHint />}
           </ReactFlow>
         </div>
       </ReactFlowProvider>
