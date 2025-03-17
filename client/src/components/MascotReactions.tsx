@@ -123,11 +123,11 @@ export default function MascotReactions({ position = 'bottom-right' }: MascotRea
       const scrollPosition = window.scrollY + window.innerHeight / 2;
       
       // Get all section elements
-      const sections = document.querySelectorAll<HTMLElement>('section[id]');
+      const sections = document.querySelectorAll('section[id]');
       
       // Find the current visible section
-      let currentSection: HTMLElement | null = null;
-      sections.forEach((section) => {
+      let currentSection: Element | null = null;
+      sections.forEach((section: Element) => {
         const sectionTop = section.getBoundingClientRect().top + window.scrollY;
         const sectionBottom = sectionTop + section.offsetHeight;
         
@@ -137,8 +137,8 @@ export default function MascotReactions({ position = 'bottom-right' }: MascotRea
       });
       
       // React based on the visible section
-      if (currentSection && !showBubble && currentSection.id) {
-        const sectionId = currentSection.id as string;
+      if (currentSection && !showBubble) {
+        const sectionId = currentSection.getAttribute('id') || '';
         
         switch (sectionId) {
           case 'services':
