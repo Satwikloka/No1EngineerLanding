@@ -38,13 +38,13 @@ const DigitalNomadJourneyAnimation = () => {
     };
   }, []);
 
-  // Animation phase descriptions
+  // Animation phase descriptions with premium McLaren-inspired styling
   const phases = [
-    "Research & Discovery",
-    "Client Meeting",
-    "Requirements Gathering",
-    "Development",
-    "Delivery & Launch"
+    "Innovation & Discovery",
+    "Client Engagement",
+    "Requirements Engineering",
+    "Precision Development",
+    "Performance Delivery"
   ];
 
   return (
@@ -53,40 +53,112 @@ const DigitalNomadJourneyAnimation = () => {
       className="perspective-container w-full h-full overflow-hidden flex flex-col items-center justify-center"
       style={{ y, scale, opacity }}
     >
-      {/* Journey progress indicator */}
-      <div className="absolute top-0 w-full flex justify-between px-6 py-2 z-20">
-        <div className="relative w-full h-2 bg-gray-200 rounded-full mt-2">
-          <motion.div 
-            className="absolute left-0 top-0 h-full rounded-full bg-gradient-to-r from-purple-600 to-orange-500"
-            style={{ width: `${(animationPhase / 4) * 100}%` }}
-            transition={{ duration: 0.5 }}
-          />
+      {/* McLaren-inspired premium journey indicator */}
+      <div className="absolute top-0 w-full flex justify-between px-6 py-4 z-20">
+        <div className="relative w-full h-3 bg-gradient-to-r from-slate-800 to-slate-700 rounded-full mt-2 shadow-lg overflow-hidden">
+          {/* Racing stripe */}
+          <div className="absolute inset-y-0 left-0 w-full h-full">
+            <div className="h-1/3 w-full bg-black bg-opacity-20"></div>
+          </div>
           
+          {/* Dynamic progress bar - McLaren papaya and blue inspired */}
+          <motion.div 
+            className="absolute left-0 top-0 h-full rounded-full"
+            style={{ 
+              width: `${(animationPhase / 4) * 100}%`, 
+              background: "linear-gradient(90deg, #FF8000 0%, #FF9D45 50%, #0090D4 100%)",
+              boxShadow: "0 0 15px rgba(255, 128, 0, 0.7)"
+            }}
+            transition={{ duration: 0.5 }}
+          >
+            {/* Highlight effect */}
+            <div className="absolute inset-0 bg-gradient-to-b from-white to-transparent opacity-30"></div>
+          </motion.div>
+          
+          {/* Phase indicators - McLaren racing style */}
           {phases.map((phase, index) => (
             <div 
               key={index}
-              className="absolute transform -translate-x-1/2 -bottom-8"
+              className="absolute transform -translate-x-1/2 -bottom-12"
               style={{ left: `${(index / 4) * 100}%` }}
             >
-              <div 
-                className={`w-3 h-3 rounded-full transition-colors duration-300 mb-1 mx-auto ${
-                  index <= animationPhase ? 'bg-gradient-to-r from-purple-600 to-orange-500' : 'bg-gray-300'
-                }`}
-              />
-              <span className={`text-xs whitespace-nowrap ${
-                index <= animationPhase ? 'text-gray-800 font-medium' : 'text-gray-400'
-              }`}>
-                {phase}
-              </span>
+              <motion.div 
+                className={`w-4 h-4 rounded-full transition-all duration-500 mb-2 mx-auto flex items-center justify-center
+                  ${index <= animationPhase ? 'bg-gradient-to-br from-[#FF8000] to-[#0090D4] shadow-[0_0_15px_rgba(255,128,0,0.7)]' : 'bg-slate-700'}`}
+                whileHover={{ scale: 1.2 }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <div className={`w-2 h-2 rounded-full ${index <= animationPhase ? 'bg-white' : 'bg-slate-600'}`}></div>
+              </motion.div>
+              <motion.div
+                className="relative"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 + 0.1 }}
+              >
+                <span className={`text-xs font-medium tracking-wider uppercase bg-slate-100 px-2 py-1 rounded-md shadow-md 
+                  ${index <= animationPhase ? 'text-slate-900 bg-opacity-90' : 'text-slate-500 bg-opacity-60'}`}
+                  style={{ fontSize: '0.7rem' }}
+                >
+                  {phase}
+                </span>
+                {index < 4 && (
+                  <div className="absolute left-full top-1/2 w-[calc(25vw-2.5rem)] h-px bg-gradient-to-r from-slate-400 to-transparent -z-10"></div>
+                )}
+              </motion.div>
             </div>
           ))}
         </div>
       </div>
       
-      {/* Main 3D scene */}
-      <div className="transform-3d relative w-full h-[450px] mt-20">
-        {/* Road/path that connects all journey phases */}
-        <div className="absolute bottom-20 left-0 right-0 h-4 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300 z-0" />
+      {/* Main 3D scene with McLaren-inspired design */}
+      <div className="transform-3d relative w-full h-[500px] mt-24">
+        {/* Racing track that connects all journey phases */}
+        <div className="absolute bottom-20 left-0 right-0 h-6 bg-gradient-to-r from-slate-700 via-slate-800 to-slate-700 z-0 shadow-lg overflow-hidden">
+          {/* Track markings */}
+          <div className="absolute inset-0 flex items-center">
+            <div className="h-px w-full bg-white bg-opacity-40"></div>
+          </div>
+          <div className="absolute inset-0 flex">
+            <motion.div 
+              className="flex-1 flex justify-around items-center"
+              animate={{ x: [-20, 0] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+            >
+              {Array.from({ length: 30 }).map((_, i) => (
+                <div key={i} className="h-2 w-8 bg-white opacity-60"></div>
+              ))}
+            </motion.div>
+          </div>
+          {/* McLaren-style racing stripe */}
+          <div className="absolute inset-y-0 left-0 right-0 overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FF8000] via-[#FF9D45] to-transparent"></div>
+          </div>
+        </div>
+
+        {/* Journey connection lines */}
+        <div className="absolute bottom-20 left-[10%] w-[80%] h-40 z-0">
+          <svg className="w-full h-full" viewBox="0 0 800 100" fill="none">
+            <motion.path 
+              d="M0,50 C100,80 200,20 400,50 C600,80 700,20 800,50" 
+              stroke="url(#journey-gradient)" 
+              strokeWidth="2" 
+              strokeDasharray="6,6" 
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 2, ease: "easeInOut" }}
+            />
+            <defs>
+              <linearGradient id="journey-gradient" x1="0" y1="0" x2="100%" y2="0">
+                <stop offset="0%" stopColor="#FF8000" />
+                <stop offset="50%" stopColor="#FF9D45" />
+                <stop offset="100%" stopColor="#0090D4" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
         
         {/* Phase 0: Research & Discovery - Laptop with multiple screens floating */}
         <motion.div
@@ -418,50 +490,138 @@ const DigitalNomadJourneyAnimation = () => {
               <div className="w-18 h-4 bg-gray-700 rounded-b-md" />
             </div>
             
-            {/* Tech Stack elements */}
-            <div className="absolute top-5 left-5 right-5 flex justify-around">
-              {/* Tech logos */}
-              {[
-                "linear-gradient(135deg, #4285F4, #34A853, #FBBC05, #EA4335)", // Google
-                "linear-gradient(135deg, #A50044, #F78422)",                   // Play Store
-                "linear-gradient(135deg, #1DA1F2, #0077B5)",                   // Social media
-                "linear-gradient(135deg, #61DAFB, #764ABC)"                    // Web tech
-              ].map((bg, i) => (
+            {/* Tech Stack elements - McLaren style tech branding */}
+            <div className="absolute top-2 left-5 right-5 z-10">
+              {/* Modern branded tech logo orbit */}
+              <div className="relative h-24 flex justify-center">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full border border-dashed border-gray-300 opacity-40"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full border border-dashed border-gray-300 opacity-30"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 rounded-full border border-dashed border-gray-300 opacity-20"></div>
+                
+                {/* Orbiting tech brand logos */}
+                {[
+                  {
+                    id: "google",
+                    color: "linear-gradient(135deg, #4285F4, #34A853, #FBBC05, #EA4335)",
+                    angle: 0,
+                    size: 14,
+                    orbit: 14,
+                    speed: 15
+                  },
+                  {
+                    id: "playstore",
+                    color: "linear-gradient(135deg, #FF8000, #F78422)",
+                    angle: 72,
+                    size: 16,
+                    orbit: 18,
+                    speed: 20
+                  },
+                  {
+                    id: "instagram",
+                    color: "linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80)",
+                    angle: 144,
+                    size: 12,
+                    orbit: 22,
+                    speed: 25
+                  },
+                  {
+                    id: "react",
+                    color: "linear-gradient(135deg, #61DAFB, #5A67D8)",
+                    angle: 216,
+                    size: 15,
+                    orbit: 16,
+                    speed: 18
+                  },
+                  {
+                    id: "twitter",
+                    color: "linear-gradient(135deg, #1DA1F2, #0077B5)",
+                    angle: 288,
+                    size: 13,
+                    orbit: 20,
+                    speed: 22
+                  }
+                ].map((logo) => (
+                  <motion.div
+                    key={logo.id}
+                    className="absolute top-1/2 left-1/2 flex items-center justify-center shadow-lg rounded-xl"
+                    style={{ 
+                      width: `${logo.size}px`,
+                      height: `${logo.size}px`,
+                      background: logo.color,
+                      boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)"
+                    }}
+                    animate={{
+                      x: [
+                        Math.cos(logo.angle * (Math.PI / 180)) * logo.orbit,
+                        Math.cos((logo.angle + 360) * (Math.PI / 180)) * logo.orbit
+                      ],
+                      y: [
+                        Math.sin(logo.angle * (Math.PI / 180)) * logo.orbit,
+                        Math.sin((logo.angle + 360) * (Math.PI / 180)) * logo.orbit
+                      ],
+                      scale: [1, 1.2, 1]
+                    }}
+                    transition={{
+                      x: { duration: logo.speed, repeat: Infinity, ease: "linear" },
+                      y: { duration: logo.speed, repeat: Infinity, ease: "linear" },
+                      scale: { 
+                        duration: 3, 
+                        repeat: Infinity, 
+                        repeatType: "reverse", 
+                        ease: "easeInOut",
+                        delay: logo.angle / 360 * 3
+                      }
+                    }}
+                  >
+                    {logo.id === "google" && (
+                      <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                        <path d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+                      </svg>
+                    )}
+                    {logo.id === "playstore" && (
+                      <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                        <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                      </svg>
+                    )}
+                    {logo.id === "instagram" && (
+                      <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                        <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
+                      </svg>
+                    )}
+                    {logo.id === "react" && (
+                      <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                        <path d="M12,10.11C13.03,10.11 13.87,10.95 13.87,12C13.87,13 13.03,13.85 12,13.85C10.97,13.85 10.13,13 10.13,12C10.13,10.95 10.97,10.11 12,10.11M7.37,20C8,20.38 9.38,19.8 10.97,18.3C10.45,17.71 9.94,17.07 9.46,16.4C8.64,16.32 7.83,16.2 7.06,16.04C6.55,18.18 6.74,19.65 7.37,20M8.08,14.26L7.79,13.75C7.68,14.04 7.57,14.33 7.5,14.61C7.77,14.67 8.07,14.72 8.38,14.77C8.28,14.6 8.18,14.43 8.08,14.26M14.62,13.5L15.43,12L14.62,10.5C14.32,9.97 14,9.5 13.71,9.03C13.17,9 12.6,9 12,9C11.4,9 10.83,9 10.29,9.03C10,9.5 9.68,9.97 9.38,10.5L8.57,12L9.38,13.5C9.68,14.03 10,14.5 10.29,14.97C10.83,15 11.4,15 12,15C12.6,15 13.17,15 13.71,14.97C14,14.5 14.32,14.03 14.62,13.5M12,6.78C11.81,7 11.61,7.23 11.41,7.5C11.61,7.5 11.8,7.5 12,7.5C12.2,7.5 12.39,7.5 12.59,7.5C12.39,7.23 12.19,7 12,6.78M12,17.22C12.19,17 12.39,16.77 12.59,16.5C12.39,16.5 12.2,16.5 12,16.5C11.8,16.5 11.61,16.5 11.41,16.5C11.61,16.77 11.81,17 12,17.22M16.62,4C16,3.62 14.62,4.2 13.03,5.7C13.55,6.29 14.06,6.93 14.54,7.6C15.36,7.68 16.17,7.8 16.94,7.96C17.45,5.82 17.26,4.35 16.62,4M15.92,9.74L16.21,10.25C16.32,9.96 16.43,9.67 16.5,9.39C16.23,9.33 15.93,9.28 15.62,9.23C15.72,9.4 15.82,9.57 15.92,9.74M17.37,2.69C18.84,3.53 19,5.74 18.38,8.32C20.92,9.07 22.75,10.31 22.75,12C22.75,13.69 20.92,14.93 18.38,15.68C19,18.26 18.84,20.47 17.37,21.31C15.91,22.15 13.92,21.19 12,19.36C10.08,21.19 8.09,22.15 6.62,21.31C5.16,20.47 5,18.26 5.62,15.68C3.08,14.93 1.25,13.69 1.25,12C1.25,10.31 3.08,9.07 5.62,8.32C5,5.74 5.16,3.53 6.62,2.69C8.09,1.85 10.08,2.81 12,4.64C13.92,2.81 15.91,1.85 17.37,2.69M17.08,12C17.42,12.75 17.72,13.5 17.97,14.26C20.07,13.63 21.25,12.73 21.25,12C21.25,11.27 20.07,10.37 17.97,9.74C17.72,10.5 17.42,11.25 17.08,12M6.92,12C6.58,11.25 6.28,10.5 6.03,9.74C3.93,10.37 2.75,11.27 2.75,12C2.75,12.73 3.93,13.63 6.03,14.26C6.28,13.5 6.58,12.75 6.92,12M15.92,14.26C15.82,14.43 15.72,14.6 15.62,14.77C15.93,14.72 16.23,14.67 16.5,14.61C16.43,14.33 16.32,14.04 16.21,13.75L15.92,14.26M13.03,18.3C14.62,19.8 16,20.38 16.62,20C17.26,19.65 17.45,18.18 16.94,16.04C16.17,16.2 15.36,16.32 14.54,16.4C14.06,17.07 13.55,17.71 13.03,18.3M8.08,9.74C8.18,9.57 8.28,9.4 8.38,9.23C8.07,9.28 7.77,9.33 7.5,9.39C7.57,9.67 7.68,9.96 7.79,10.25L8.08,9.74M10.97,5.7C9.38,4.2 8,3.62 7.37,4C6.74,4.35 6.55,5.82 7.06,7.96C7.83,7.8 8.64,7.68 9.46,7.6C9.94,6.93 10.45,6.29 10.97,5.7Z" />
+                      </svg>
+                    )}
+                    {logo.id === "twitter" && (
+                      <svg className="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                        <path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" />
+                      </svg>
+                    )}
+                  </motion.div>
+                ))}
+                
+                {/* Central logo - Highlight for Play Store */}
                 <motion.div
-                  key={i}
-                  className="w-10 h-10 rounded-lg shadow-xl flex items-center justify-center"
-                  style={{ background: bg }}
-                  animate={{ 
-                    y: [0, -10, 0],
-                    rotate: i % 2 === 0 ? [0, 10, 0, -10, 0] : [0, -10, 0, 10, 0]
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-xl shadow-xl flex items-center justify-center"
+                  style={{ 
+                    background: "linear-gradient(135deg, #FF8000, #F78422)",
+                    boxShadow: "0 0 20px rgba(255, 128, 0, 0.5)"
                   }}
-                  transition={{ 
-                    y: { duration: 2 + i * 0.5, repeat: Infinity },
-                    rotate: { duration: 5, repeat: Infinity }
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    rotate: [0, 5, 0, -5, 0]
+                  }}
+                  transition={{
+                    scale: { duration: 3, repeat: Infinity, repeatType: "reverse" },
+                    rotate: { duration: 6, repeat: Infinity, repeatType: "mirror" }
                   }}
                 >
-                  {i === 0 && (
-                    <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
-                    </svg>
-                  )}
-                  {i === 1 && (
-                    <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
-                    </svg>
-                  )}
-                  {i === 2 && (
-                    <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
-                    </svg>
-                  )}
-                  {i === 3 && (
-                    <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12,17.56L16.07,16.43L16.62,10.33H9.38L9.2,8.3H16.8L17,6.31H7L7.56,12.32H14.45L14.22,14.9L12,15.5L9.78,14.9L9.64,13.24H7.64L7.93,16.43L12,17.56M4.07,3H19.93L18.5,19.2L12,21L5.5,19.2L4.07,3Z" />
-                    </svg>
-                  )}
+                  <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                  </svg>
                 </motion.div>
-              ))}
+              </div>
             </div>
             
             {/* Code blocks floating */}
