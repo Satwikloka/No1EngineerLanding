@@ -3,6 +3,7 @@ import { ChevronDown, ArrowRight, Globe, Code, Share2 } from "lucide-react";
 import { fadeIn, slideUp } from "@/lib/framer-animations";
 import React, { useEffect, useState, useRef } from "react";
 import McLarenJourneyAnimation from './McLarenJourneyAnimation';
+import MercedesJourneyAnimation from './MercedesJourneyAnimation';
 
 // Digital Nomad Journey Animation - 4K Business Journey
 const DigitalNomadJourneyAnimation = () => {
@@ -1068,7 +1069,7 @@ export default function HeroSection() {
           <div className="relative w-full">
             {/* Full display of journey animation */}
             <div className="h-[600px] perspective-container mx-auto max-w-5xl">
-              <McLarenJourneyAnimation />
+              <MercedesJourneyAnimation />
             </div>
             
             {/* Instruction text */}
