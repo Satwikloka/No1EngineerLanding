@@ -10,10 +10,10 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: "About", href: "#about" },
-  { label: "Features", href: "#features" },
-  { label: "Services", href: "#services" },
-  { label: "Contact", href: "#contact", isButton: true },
+  { label: "గురించి", href: "#about" },
+  { label: "సేవలు", href: "#services" },
+  { label: "ఫీచర్స్", href: "#features" },
+  { label: "సంప్రదించండి", href: "#contact", isButton: true },
 ];
 
 export default function Header() {
@@ -53,14 +53,16 @@ export default function Header() {
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/90 backdrop-blur-sm shadow-sm" : "bg-transparent"
+        scrolled 
+          ? "bg-blue-900/90 backdrop-blur-sm shadow-md" 
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 md:px-8 py-4">
         <nav className="flex items-center justify-between">
           <a href="#" className="flex items-center">
-            <span className="text-xl md:text-2xl font-bold font-['Montserrat'] text-primary">
-              <span className="text-blue-500">no1</span>.engineer
+            <span className="text-xl md:text-2xl font-bold font-telugu text-white">
+              <span className="text-yellow-400">no1</span>.engineer
             </span>
           </a>
 
@@ -70,14 +72,14 @@ export default function Header() {
               <li key={index}>
                 {item.isButton ? (
                   <Button asChild>
-                    <a href={item.href} className="bg-blue-500 hover:bg-blue-600">
+                    <a href={item.href} className="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-telugu">
                       {item.label}
                     </a>
                   </Button>
                 ) : (
                   <a
                     href={item.href}
-                    className="text-neutral-700 hover:text-blue-500 transition-colors"
+                    className="text-white hover:text-yellow-400 transition-colors font-telugu"
                   >
                     {item.label}
                   </a>
@@ -90,7 +92,7 @@ export default function Header() {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden text-white hover:bg-blue-800/50"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
@@ -111,7 +113,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white shadow-lg absolute w-full left-0 top-full"
+            className="md:hidden bg-blue-900/95 backdrop-blur-sm shadow-lg absolute w-full left-0 top-full"
           >
             <ul className="container mx-auto px-6 py-4 space-y-4">
               {navItems.map((item, index) => (
@@ -119,7 +121,7 @@ export default function Header() {
                   {item.isButton ? (
                     <Button
                       asChild
-                      className="w-full bg-blue-500 hover:bg-blue-600"
+                      className="w-full bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-telugu"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       <a href={item.href}>{item.label}</a>
@@ -127,7 +129,7 @@ export default function Header() {
                   ) : (
                     <a
                       href={item.href}
-                      className="block text-neutral-700 hover:text-blue-500 py-2 transition-colors"
+                      className="block text-white hover:text-yellow-400 py-2 transition-colors font-telugu text-lg"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.label}
