@@ -1,27 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function AnimatedBoyModel() {
-  // Refs for animation elements
-  const headRef = useRef<SVGCircleElement>(null);
-  const bodyRef = useRef<SVGPathElement>(null);
-  const leftArmRef = useRef<SVGPathElement>(null);
-  const rightArmRef = useRef<SVGPathElement>(null);
-  
-  // Animation effect
-  useEffect(() => {
-    const animateElements = () => {
-      // Add animation classes or manipulate elements directly if needed
-    };
-    
-    animateElements();
-    
-    // Clean up animations if needed
-    return () => {
-      // Cleanup code
-    };
-  }, []);
-
   return (
     <motion.div 
       className="w-full h-full flex items-center justify-center"
@@ -79,7 +59,6 @@ export default function AnimatedBoyModel() {
 
         {/* Body */}
         <motion.path
-          ref={bodyRef}
           d="M200,160 C230,160 260,180 260,230 C260,280 230,340 200,340 C170,340 140,280 140,230 C140,180 170,160 200,160 Z"
           fill="url(#bodyGradient)"
           animate={{ 
@@ -110,7 +89,7 @@ export default function AnimatedBoyModel() {
             }}
           >
             {Array.from({length: 15}).map((_, i) => (
-              <React.Fragment key={i}>
+              <g key={i}>
                 <circle 
                   cx={140 + (i % 5) * 30} 
                   cy={180 + Math.floor(i / 5) * 40} 
@@ -127,14 +106,13 @@ export default function AnimatedBoyModel() {
                   strokeWidth="1" 
                   opacity="0.1" 
                 />
-              </React.Fragment>
+              </g>
             ))}
           </motion.g>
         </g>
 
         {/* Head */}
         <motion.circle
-          ref={headRef}
           cx="200"
           cy="120"
           r="60"
@@ -240,7 +218,6 @@ export default function AnimatedBoyModel() {
 
         {/* Arms */}
         <motion.path
-          ref={leftArmRef}
           d="M150,200 C120,230 110,270 120,300"
           stroke="url(#bodyGradient)"
           strokeWidth="20"
@@ -261,7 +238,6 @@ export default function AnimatedBoyModel() {
         />
 
         <motion.path
-          ref={rightArmRef}
           d="M250,200 C280,230 290,270 280,300"
           stroke="url(#bodyGradient)"
           strokeWidth="20"
