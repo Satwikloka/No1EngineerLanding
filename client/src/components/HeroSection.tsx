@@ -1069,7 +1069,7 @@ export default function HeroSection() {
           <div className="relative w-full">
             {/* Full display of journey animation */}
             <div className="h-[600px] perspective-container mx-auto max-w-5xl">
-              <MercedesJourneyAnimation />
+              <McLarenJourneyAnimation />
             </div>
             
             {/* Instruction text */}

@@ -29,31 +29,31 @@ export default function McLarenJourneyAnimation() {
       title: "Research",
       icon: <Laptop className="w-6 h-6" />,
       description: "Initial project requirements gathering and planning",
-      color: "#FF8000" // McLaren Papaya
+      color: "#00A19C" // Mercedes Teal
     },
     {
       title: "Consultation",
       icon: <Bike className="w-6 h-6" />,
       description: "Personal client visit via bicycle to understand needs",
-      color: "#FF8000" // McLaren Papaya
+      color: "#00A19C" // Mercedes Teal
     },
     {
       title: "Development", 
       icon: <Code className="w-6 h-6" />,
       description: "High-performance coding and development",
-      color: "#0090D4" // McLaren Blue
+      color: "#333333" // Mercedes Dark Gray
     },
     {
       title: "Testing",
       icon: <Smartphone className="w-6 h-6" />,
       description: "Multi-platform quality assurance",
-      color: "#0090D4" // McLaren Blue
+      color: "#333333" // Mercedes Dark Gray
     },
     {
       title: "Delivery",
       icon: <Send className="w-6 h-6" />,
       description: "Global delivery of completed project",
-      color: "#FF8000" // McLaren Papaya
+      color: "#00A19C" // Mercedes Teal
     }
   ];
   
@@ -63,21 +63,21 @@ export default function McLarenJourneyAnimation() {
       className="relative w-full h-full bg-black rounded-lg overflow-hidden border border-[#333] p-4"
       style={{ position: 'relative' }}
     >
-      {/* McLaren-style header */}
+      {/* Mercedes-style header */}
       <div className="absolute top-0 left-0 w-full h-16 flex items-center px-6 z-20">
         <div className="flex items-center space-x-4">
-          <div className="w-10 h-10 bg-[#FF8000] flex items-center justify-center rounded-full">
-            <span className="text-lg font-bold text-black">1</span>
+          <div className="w-10 h-10 bg-[#00A19C] flex items-center justify-center rounded-full">
+            <span className="text-lg font-bold text-white">1</span>
           </div>
           <div className="font-bold text-white uppercase tracking-widest text-lg">Development Journey</div>
         </div>
       </div>
       
-      {/* McLaren Papaya top accent */}
-      <div className="absolute top-0 right-0 w-1/3 h-4 bg-[#FF8000]"></div>
+      {/* Mercedes Teal top accent */}
+      <div className="absolute top-0 right-0 w-1/3 h-4 bg-[#00A19C]"></div>
       
-      {/* McLaren Blue bottom accent */}
-      <div className="absolute bottom-0 left-0 w-1/2 h-4 bg-[#0090D4]"></div>
+      {/* Mercedes Dark Gray bottom accent */}
+      <div className="absolute bottom-0 left-0 w-1/2 h-4 bg-[#333333]"></div>
       
       {/* Progress Track */}
       <div className="absolute top-32 left-4 right-4 h-2 bg-[#222] rounded-full overflow-hidden">
@@ -86,7 +86,7 @@ export default function McLarenJourneyAnimation() {
           className="h-full rounded-full"
           style={{
             width: `${(stage / 4) * 100}%`,
-            background: "linear-gradient(90deg, #FF8000, #0090D4)"
+            background: "linear-gradient(90deg, #00A19C, #333333)"
           }}
         ></motion.div>
       </div>
@@ -311,7 +311,7 @@ export default function McLarenJourneyAnimation() {
                   {/* Digital delivery stream */}
                   <motion.div
                     className="absolute left-20 top-1/2 -translate-y-1/2 w-[120px] h-2"
-                    style={{ background: "linear-gradient(90deg, #FF8000, #0090D4)" }}
+                    style={{ background: "linear-gradient(90deg, #00A19C, #333333)" }}
                     animate={{
                       width: ["0%", "100%"],
                       x: [0, 30]
@@ -329,9 +329,9 @@ export default function McLarenJourneyAnimation() {
                     animate={{ x: [0, 120] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
                   >
-                    <div className="w-3 h-3 rounded-full bg-[#FF8000]"></div>
-                    <div className="w-3 h-3 rounded-full bg-[#0090D4]"></div>
-                    <div className="w-3 h-3 rounded-full bg-[#FF8000]"></div>
+                    <div className="w-3 h-3 rounded-full bg-[#00A19C]"></div>
+                    <div className="w-3 h-3 rounded-full bg-[#333333]"></div>
+                    <div className="w-3 h-3 rounded-full bg-[#00A19C]"></div>
                   </motion.div>
                   
                   {/* Global receiver */}
