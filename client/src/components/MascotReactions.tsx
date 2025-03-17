@@ -128,15 +128,16 @@ export default function MascotReactions({ position = 'bottom-right' }: MascotRea
       // Find the current visible section
       let currentSection: HTMLElement | null = null;
       
-      // Convert NodeList to Array for better handling
-      Array.from(sections).forEach(section => {
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i] as HTMLElement;
         const sectionTop = section.getBoundingClientRect().top + window.scrollY;
         const sectionBottom = sectionTop + section.offsetHeight;
         
         if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
           currentSection = section;
+          break;
         }
-      });
+      }
       
       // React based on the visible section
       if (currentSection && !showBubble) {

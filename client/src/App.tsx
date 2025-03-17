@@ -50,7 +50,7 @@ function App() {
       {showOpener && <WelcomeOpener onComplete={handleOpenerComplete} />}
       <Router />
       <WhatsAppButton />
-      {showMascot && <MascotReactions position="bottom-right" />}
+      {showMascot && <MascotReactions position="bottom-left" />}
     </QueryClientProvider>
   );
 }
