@@ -71,7 +71,11 @@ function ContactForm() {
               <FormControl>
                 <Input 
                   placeholder="మీ పేరు" 
-                  {...field} 
+                  onChange={field.onChange}
+                  onBlur={field.onBlur}
+                  name={field.name}
+                  value={field.value ?? ''}
+                  ref={field.ref}
                   className="border-black focus:border-black focus:ring-0 rounded-none h-12 font-telugu" 
                 />
               </FormControl>
@@ -89,7 +93,11 @@ function ContactForm() {
               <FormControl>
                 <Input 
                   placeholder="your.email@example.com" 
-                  {...field} 
+                  onChange={field.onChange}
+                  onBlur={field.onBlur}
+                  name={field.name}
+                  value={field.value ?? ''}
+                  ref={field.ref}
                   className="border-black focus:border-black focus:ring-0 rounded-none h-12" 
                 />
               </FormControl>
@@ -144,7 +152,11 @@ function ContactForm() {
         
         <Button 
           type="submit" 
-          className="w-full btn-primary py-6 font-telugu text-lg" 
+          className="w-full py-6 font-telugu text-lg text-white rounded-lg shadow-lg" 
+          style={{ 
+            background: "linear-gradient(135deg, #FF8000 0%, #0090D4 100%)",
+            boxShadow: "0 4px 14px rgba(255, 128, 0, 0.3), 0 2px 8px rgba(0, 144, 212, 0.3)"
+          }}
           disabled={isPending}
         >
           {isPending ? "పంపుతోంది..." : "సందేశం పంపండి"}
@@ -162,15 +174,29 @@ interface ContactInfoProps {
 
 function ContactInfo({ icon, title, info }: ContactInfoProps) {
   return (
-    <div className="flex items-start gap-6 mb-8">
-      <div className="text-black">
+    <motion.div 
+      className="flex items-start gap-6 mb-8"
+      whileHover={{ x: 5 }}
+      transition={{ duration: 0.3 }}
+    >
+      <motion.div 
+        className="p-3 rounded-lg text-white flex items-center justify-center"
+        style={{ 
+          background: "linear-gradient(135deg, #FF8000 0%, #0090D4 100%)",
+          boxShadow: "0 4px 6px -1px rgba(255, 128, 0, 0.1), 0 2px 4px -1px rgba(0, 144, 212, 0.06)"
+        }}
+        whileHover={{ 
+          scale: 1.1, 
+          boxShadow: "0 10px 15px -3px rgba(255, 128, 0, 0.2), 0 4px 6px -2px rgba(0, 144, 212, 0.1)" 
+        }}
+      >
         {icon}
-      </div>
+      </motion.div>
       <div>
         <h3 className="text-lg font-semibold mb-2 font-telugu">{title}</h3>
         <p className="opacity-70 font-telugu">{info}</p>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -205,10 +231,10 @@ export default function ContactSection() {
   ];
 
   const socialLinks = [
-    { icon: <Twitter className="h-5 w-5" />, href: "https://twitter.com" },
-    { icon: <Linkedin className="h-5 w-5" />, href: "https://linkedin.com" },
-    { icon: <Github className="h-5 w-5" />, href: "https://github.com" },
-    { icon: <Instagram className="h-5 w-5" />, href: "https://instagram.com" }
+    { icon: <Twitter className="h-5 w-5" />, href: "https://twitter.com", color: "#1DA1F2" },
+    { icon: <Linkedin className="h-5 w-5" />, href: "https://linkedin.com", color: "#0A66C2" },
+    { icon: <Github className="h-5 w-5" />, href: "https://github.com", color: "#333333" },
+    { icon: <Instagram className="h-5 w-5" />, href: "https://instagram.com", color: "#E4405F" }
   ];
 
   return (
@@ -241,24 +267,13 @@ export default function ContactSection() {
             </div>
             
             <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-6 font-telugu">పోర్ట్‌ఫోలియో లింక్స్</h3>
+              <h3 className="text-xl font-semibold mb-6 font-telugu">నా గురించి</h3>
               <div className="space-y-4">
-                {portfolioLinks.map((link, index) => (
-                  <a 
-                    key={index}
-                    href={link.url}
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="font-telugu flex items-center space-x-2 text-[#831843] hover:underline"
-                  >
-                    <div className="p-2 rounded-full bg-gradient-to-r from-[#A78BFA] to-[#FB923C] opacity-80">
-                      <Globe className="h-4 w-4 text-white" />
-                    </div>
-                    <span>{link.name}</span>
-                  </a>
-                ))}
-                <p className="mt-2 text-sm opacity-70 font-telugu">
-                  Play Store లో కూడా అందుబాటులో ఉన్నాయి
+                <p className="font-telugu opacity-70">
+                  నేను Android మరియు web అప్లికేషన్ల డెవలపర్ని. స్వేచ్ఛగా విలువైన సాంకేతిక సేవలను అందిస్తాను మరియు నాణ్యమైన రిజల్ట్‌లను పొందడానికి బలమైన నివేదన సంబంధాలను ఏర్పరుస్తాను.
+                </p>
+                <p className="font-telugu opacity-70 mt-2">
+                  సాధారణ Play Store మరియు iOS నుండి వెబ్ అప్లికేషన్‌లకు అన్ని ప్లాట్‌ఫారమ్‌లలో సేవలు అందిస్తున్నాను.
                 </p>
               </div>
             </div>
@@ -267,27 +282,65 @@ export default function ContactSection() {
               <h3 className="text-xl font-semibold mb-6 font-telugu">సోషల్ మీడియాలో కనెక్ట్ అవ్వండి</h3>
               <div className="flex space-x-6">
                 {socialLinks.map((social, index) => (
-                  <a 
+                  <motion.a 
                     key={index}
                     href={social.href} 
-                    className="border border-black p-3 hover:bg-black hover:text-white transition-colors"
+                    className="p-3 rounded-lg shadow-md text-white transition-all"
+                    style={{ backgroundColor: social.color }}
+                    whileHover={{ 
+                      scale: 1.1, 
+                      boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" 
+                    }}
+                    whileTap={{ scale: 0.95 }}
                     aria-label="Social media link"
                   >
                     {social.icon}
-                  </a>
+                  </motion.a>
                 ))}
+                {/* Premium McLaren-inspired accent button */}
+                <motion.a 
+                  href="#contact" 
+                  className="p-3 rounded-lg shadow-md flex items-center justify-center"
+                  style={{ 
+                    background: "linear-gradient(135deg, #FF8000 0%, #0090D4 100%)",
+                    width: "44px",
+                    height: "44px" 
+                  }}
+                  whileHover={{ 
+                    scale: 1.1, 
+                    boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" 
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  aria-label="McLaren-inspired link"
+                >
+                  <Mail className="h-5 w-5 text-white" />
+                </motion.a>
               </div>
             </div>
           </motion.div>
           
           <motion.div 
-            className="border border-black p-8"
+            className="p-8 rounded-xl shadow-xl overflow-hidden relative"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={slideUp}
+            style={{ 
+              background: "#FFFFFF",
+              boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01)" 
+            }}
           >
-            <h3 className="text-xl font-semibold mb-8 font-telugu">మాకు సందేశం పంపండి</h3>
+            {/* McLaren racing stripe */}
+            <div className="absolute left-0 top-0 h-full w-2 bg-[#FF8000]"></div>
+            
+            {/* Corner accent */}
+            <div className="absolute right-0 top-0 w-20 h-20">
+              <div className="absolute right-0 top-0 w-full h-full overflow-hidden">
+                <div className="absolute right-0 top-0 transform rotate-45 translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-[#0090D4] opacity-80"></div>
+              </div>
+            </div>
+            
+            <h3 className="text-xl font-semibold mb-8 font-telugu relative z-10">మాకు సందేశం పంపండి</h3>
             <ContactForm />
           </motion.div>
         </div>
