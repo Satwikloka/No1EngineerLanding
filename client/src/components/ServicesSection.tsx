@@ -1,146 +1,292 @@
-import { motion } from "framer-motion";
-import { Code, Smartphone, Instagram, Globe, Store, Youtube, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Code, Smartphone, Instagram, Globe, Store, Youtube, ArrowRight, X, ChevronRight, Code2, Database, LineChart, Headphones, Rocket, BarChart, MousePointer } from "lucide-react";
 import { fadeIn, slideUp } from "@/lib/framer-animations";
-import React from "react";
 
 interface ServiceProps {
   icon: React.ReactNode;
   title: string;
   description: string;
+  details: {
+    offerings: string[];
+    technologies: string[];
+    process: string[];
+  };
+  color: string;
 }
 
-// Array of services with Telugu content
+// Array of services with English content
 const services: ServiceProps[] = [
   {
     icon: <Smartphone size={24} />,
-    title: "మొబైల్ యాప్ డెవలప్‌మెంట్",
-    description: "మీ వ్యాపారం కోసం పూర్తిగా అనుకూలీకరించిన Android మరియు iOS యాప్‌లు, మీ వినియోగదారులకు నేరుగా చేరుకోవడానికి."
+    title: "Mobile App Development",
+    description: "Custom Android and iOS apps to reach your users directly and enhance your business capabilities.",
+    details: {
+      offerings: ["Native iOS Development", "Native Android Development", "React Native Cross-Platform", "Flutter Development", "App Store Optimization"],
+      technologies: ["Swift", "Kotlin", "React Native", "Flutter", "Firebase"],
+      process: ["Requirements Analysis", "UI/UX Design", "Development", "Testing", "Deployment & Maintenance"]
+    },
+    color: "from-blue-500 to-cyan-400"
   },
   {
     icon: <Globe size={24} />,
-    title: "వెబ్‌సైట్ డెవలప్‌మెంట్",
-    description: "ఆకర్షణీయమైన, ప్రతిస్పందించే వెబ్‌సైట్‌లు మీ వ్యాపారాన్ని ఆన్‌లైన్‌లో ప్రదర్శించడానికి మరియు కొత్త వినియోగదారులను ఆకర్షించడానికి."
+    title: "Website Development",
+    description: "Responsive, fast-loading websites that showcase your business and attract new customers.",
+    details: {
+      offerings: ["Business Websites", "E-commerce Solutions", "Web Applications", "Landing Pages", "PWAs"],
+      technologies: ["React.js", "Next.js", "Node.js", "Tailwind CSS", "Three.js"],
+      process: ["Discovery & Planning", "Wireframing", "Visual Design", "Development", "Launch & Support"]
+    },
+    color: "from-purple-500 to-blue-500"
   },
   {
     icon: <Instagram size={24} />,
-    title: "సోషల్ మీడియా మార్కెటింగ్",
-    description: "Instagram, Facebook మరియు ఇతర ప్లాట్‌ఫామ్‌లలో మీ వ్యాపార దృశ్యమానతను పెంచడానికి వ్యూహాలు మరియు కంటెంట్ నిర్వహణ."
+    title: "Social Media Marketing",
+    description: "Strategic content creation and management to boost your visibility across all social platforms.",
+    details: {
+      offerings: ["Instagram Marketing", "Facebook Campaigns", "LinkedIn Business Growth", "TikTok Strategy", "Social Content Creation"],
+      technologies: ["Meta Business Suite", "Hootsuite", "Canva", "Later", "Buffer"],
+      process: ["Audit & Strategy", "Content Calendar", "Creation & Publishing", "Community Management", "Analytics & Optimization"]
+    },
+    color: "from-pink-500 to-rose-400"
   },
   {
     icon: <Store size={24} />,
-    title: "ఆన్‌లైన్ స్టోర్స్",
-    description: "మీ ఉత్పత్తులను ఆన్‌లైన్‌లో విక్రయించేందుకు పూర్తి ఇ-కామర్స్ పరిష్కారాలు, చెల్లింపు ప్రాసెసింగ్ మరియు ఇన్వెంటరీ నిర్వహణతో."
+    title: "E-commerce Solutions",
+    description: "Complete online store setups with payment processing, inventory management, and SEO optimization.",
+    details: {
+      offerings: ["Shopify Development", "WooCommerce Stores", "Product Catalog Management", "Payment Integration", "Order Fulfillment Systems"],
+      technologies: ["Shopify", "WooCommerce", "Stripe", "PayPal", "Inventory Management Systems"],
+      process: ["Store Setup", "Product Import", "Payment Gateway Integration", "Testing", "Launch & Marketing"]
+    },
+    color: "from-emerald-500 to-teal-400"
   },
   {
     icon: <Youtube size={24} />,
-    title: "వీడియో మార్కెటింగ్",
-    description: "మీ ఉత్పత్తులు మరియు సేవల కోసం ఆకర్షణీయమైన వీడియోలు సృష్టించడం, YouTube మరియు సోషల్ మీడియాలో ప్రమోట్ చేయడం."
+    title: "Video Marketing",
+    description: "Creating engaging videos for your products and services, and promoting them on YouTube and social media.",
+    details: {
+      offerings: ["Product Demos", "Explainer Videos", "Social Media Shorts", "YouTube Channel Management", "Video Ads"],
+      technologies: ["Adobe Premiere Pro", "After Effects", "DaVinci Resolve", "YouTube Studio", "TikTok Creator Tools"],
+      process: ["Concept Development", "Storyboarding", "Production", "Editing", "Distribution & Promotion"]
+    },
+    color: "from-red-500 to-orange-400"
   },
   {
     icon: <Code size={24} />,
-    title: "కస్టమ్ సాఫ్ట్‌వేర్ సొల్యూషన్స్",
-    description: "మీ బిజినెస్ అవసరాలకు ప్రత్యేకంగా రూపొందించిన సాఫ్ట్‌వేర్, మీ ప్రక్రియలను సరళీకృతం చేయడానికి మరియు సామర్థ్యాన్ని మెరుగుపరచడానికి."
+    title: "Custom Software Solutions",
+    description: "Tailored software for your business needs, streamlining your processes and improving efficiency.",
+    details: {
+      offerings: ["Business Process Automation", "CRM Systems", "Inventory Management", "Custom Dashboards", "Data Analytics Platforms"],
+      technologies: ["Python", "JavaScript", "Node.js", "React", "SQL/NoSQL Databases"],
+      process: ["Business Analysis", "Solution Architecture", "Development", "Integration", "Maintenance & Support"]
+    },
+    color: "from-violet-500 to-purple-400"
   }
 ];
 
-// SVG icon representing Pochampally Ikat pattern from Telangana
-const PochampallyPattern = () => (
+// Tech pattern instead of traditional pattern
+const TechPattern = () => (
   <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" fillRule="evenodd">
       <path d="M0 0h60v60H0z" />
-      <path
-        d="M15 15l15 15-15 15m30-30L30 30l15 15"
-        stroke="url(#pochampally-gradient)"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10 30h40M30 10v40"
-        stroke="url(#pochampally-gradient)"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeDasharray="2,4"
-      />
+      <circle cx="30" cy="30" r="25" stroke="url(#tech-gradient)" strokeWidth="1.5" strokeDasharray="4 2" />
+      <circle cx="30" cy="30" r="15" stroke="url(#tech-gradient)" strokeWidth="1.5" />
+      <path d="M20 20l20 20M40 20L20 40" stroke="url(#tech-gradient)" strokeWidth="1.5" strokeLinecap="round" />
       <defs>
-        <linearGradient id="pochampally-gradient" x1="0" y1="0" x2="60" y2="60" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#FB923C" />
-          <stop offset="1" stopColor="#A78BFA" />
+        <linearGradient id="tech-gradient" x1="0" y1="0" x2="60" y2="60" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#00A19C" />
+          <stop offset="1" stopColor="#7038FF" />
         </linearGradient>
       </defs>
     </g>
   </svg>
 );
 
-// Function to render each service card
-function ServiceItem({ icon, title, description }: ServiceProps) {
+// Function to render each service card with interactive expanding details
+function ServiceItem({ icon, title, description, details, color }: ServiceProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  
   return (
     <motion.div 
-      className="card group hover-lift"
+      className={`card group hover-lift rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm relative`}
       variants={slideUp}
       whileHover={{ y: -5, transition: { type: "spring", stiffness: 300 } }}
+      initial={{ height: 'auto' }}
+      animate={{ height: isExpanded ? 'auto' : 'auto' }}
+      transition={{ height: { duration: 0.3 } }}
     >
-      <div className="mb-6 relative">
-        <div className="absolute inset-0 -z-10 rounded-full w-12 h-12 bg-gradient-to-br from-[#A78BFA] to-[#FB923C] opacity-20"></div>
-        <motion.div 
-          className="text-[#831843]"
-          animate={{ 
-            scale: [1, 1.1, 1],
-          }}
-          transition={{ 
-            duration: 2, 
-            repeat: Infinity,
-            repeatType: "reverse"
-          }}
+      {/* Top color bar */}
+      <div className={`h-1.5 w-full bg-gradient-to-r ${color}`}></div>
+      
+      <div className="p-6">
+        <div className="mb-6 relative">
+          <div className={`absolute inset-0 -z-10 rounded-full w-12 h-12 bg-gradient-to-br ${color} opacity-20`}></div>
+          <motion.div 
+            className="text-[#00A19C]"
+            animate={{ 
+              scale: [1, 1.1, 1],
+            }}
+            transition={{ 
+              duration: 2, 
+              repeat: Infinity,
+              repeatType: "reverse"
+            }}
+          >
+            {icon}
+          </motion.div>
+        </div>
+        
+        <h3 className="text-xl font-semibold mb-3">{title}</h3>
+        <p className="text-gray-600 dark:text-gray-400 mb-6">{description}</p>
+        
+        <div 
+          className="flex items-center space-x-2 text-sm mt-auto text-[#00A19C] cursor-pointer"
+          onClick={() => setIsExpanded(!isExpanded)}
         >
-          {icon}
-        </motion.div>
+          <span>{isExpanded ? "Show less" : "Learn more"}</span>
+          <motion.div
+            animate={isExpanded ? { rotate: 90 } : { rotate: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ChevronRight className="h-4 w-4" />
+          </motion.div>
+        </div>
       </div>
       
-      <h3 className="text-xl font-semibold mb-3 font-telugu cultural-decoration">{title}</h3>
-      <p className="opacity-70 mb-6 font-telugu">{description}</p>
-      
-      <div className="flex items-center space-x-2 text-sm font-telugu mt-auto group-hover:text-[#831843]">
-        <span>మరింత తెలుసుకోండి</span>
-        <motion.div
-          animate={{ x: [0, 5, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse" }}
-        >
-          <ArrowRight className="h-4 w-4 transition-transform" />
-        </motion.div>
-      </div>
+      {/* Expandable detailed content */}
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="px-6 pb-6 border-t border-gray-100 dark:border-gray-800 mt-4 pt-4"
+          >
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-sm font-semibold mb-2 flex items-center">
+                  <Code2 size={16} className="mr-2 text-[#00A19C]" />
+                  What we offer:
+                </h4>
+                <ul className="grid grid-cols-2 gap-2">
+                  {details.offerings.map((item, i) => (
+                    <li key={i} className="text-xs flex items-start">
+                      <div className="mt-1 mr-1.5 h-1.5 w-1.5 rounded-full bg-[#7038FF]"></div>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div>
+                <h4 className="text-sm font-semibold mb-2 flex items-center">
+                  <Database size={16} className="mr-2 text-[#00A19C]" />
+                  Technologies we use:
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {details.technologies.map((tech, i) => (
+                    <span 
+                      key={i} 
+                      className={`text-xs py-1 px-2 rounded-full bg-gradient-to-r ${color} bg-opacity-10 text-gray-800 dark:text-gray-200`}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              <div>
+                <h4 className="text-sm font-semibold mb-2 flex items-center">
+                  <LineChart size={16} className="mr-2 text-[#00A19C]" />
+                  Our process:
+                </h4>
+                <ol className="space-y-1">
+                  {details.process.map((step, i) => (
+                    <li key={i} className="text-xs flex items-center">
+                      <span className="inline-block h-5 w-5 rounded-full bg-[#00A19C] text-white flex items-center justify-center mr-2 text-[10px]">{i+1}</span>
+                      {step}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+              
+              <motion.div 
+                className="mt-4 text-center"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <a 
+                  href="#contact" 
+                  className={`inline-block text-sm py-2 px-4 rounded-full bg-gradient-to-r ${color} text-white font-medium`}
+                >
+                  Get a quote
+                </a>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
 
+// Interactive Process Steps
+const processSteps = [
+  { 
+    icon: <Headphones size={28} />, 
+    title: "Consultation", 
+    description: "We listen to your needs and understand your business goals." 
+  },
+  { 
+    icon: <Code2 size={28} />, 
+    title: "Development", 
+    description: "Our team brings your vision to life with cutting-edge technology." 
+  },
+  { 
+    icon: <Rocket size={28} />, 
+    title: "Launch", 
+    description: "We deploy your solution and ensure everything runs smoothly." 
+  },
+  { 
+    icon: <BarChart size={28} />, 
+    title: "Growth", 
+    description: "Continuous optimization and support to scale your business." 
+  }
+];
+
 export default function ServicesSection() {
+  const [activeProcess, setActiveProcess] = useState<number | null>(null);
+  
   return (
-    <section id="services" className="telugu-border-pattern">
-      <div className="section-container">
+    <section id="services" className="py-20 relative overflow-hidden">
+      <div className="container mx-auto px-4">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
-          className="max-w-3xl mb-20"
+          className="max-w-3xl mx-auto mb-20 text-center"
         >
-          <div className="flex items-center mb-8">
+          <div className="flex items-center justify-center mb-8">
             <motion.div
               initial={{ opacity: 0, rotate: -90 }}
               animate={{ opacity: 1, rotate: 0 }}
               transition={{ duration: 1 }}
             >
-              <PochampallyPattern />
+              <TechPattern />
             </motion.div>
-            <h2 className="title-lg font-telugu ml-4">మా సేవలు</h2>
+            <h2 className="text-4xl font-bold ml-4 bg-clip-text text-transparent bg-gradient-to-r from-[#00A19C] to-[#7038FF]">Our Services</h2>
           </div>
           
-          <p className="text-xl md:text-2xl font-telugu">
-            మీ వ్యాపారాన్ని డిజిటల్ ప్రపంచంలో ముందుకు తీసుకెళ్లడానికి మేము అందించే పరిష్కారాలు
+          <p className="text-xl text-gray-600 dark:text-gray-400">
+            Innovative solutions to propel your business forward in the digital world
           </p>
         </motion.div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+        {/* Interactive Services Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -155,40 +301,62 @@ export default function ServicesSection() {
           ))}
         </div>
         
-        {/* Andhra & Telangana cultural design element */}
+        {/* Interactive Process Section */}
         <motion.div 
-          className="mt-24 relative py-12"
+          className="mt-32 relative py-12 bg-gray-50 dark:bg-gray-800/50 rounded-xl overflow-hidden"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
         >
-          <div className="absolute top-0 w-full h-1 bg-gradient-to-r from-transparent via-[#A78BFA] to-transparent"></div>
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#00A19C] to-[#7038FF]"></div>
           
-          <div className="max-w-4xl mx-auto text-center relative">
-            <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 w-20 h-20 flex items-center justify-center">
-              <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" clipRule="evenodd" d="M30 5C16.2 5 5 16.2 5 30C5 43.8 16.2 55 30 55C43.8 55 55 43.8 55 30C55 16.2 43.8 5 30 5ZM30 50C18.95 50 10 41.05 10 30C10 18.95 18.95 10 30 10C41.05 10 50 18.95 50 30C50 41.05 41.05 50 30 50Z" fill="url(#andhrapattern)"/>
-                <path d="M31 15.5V30.25L42.5 37.75L40 42L25 32.5V15.5H31Z" fill="url(#andhrapattern)"/>
-                <defs>
-                  <linearGradient id="andhrapattern" x1="5" y1="5" x2="55" y2="55" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#FB923C"/>
-                    <stop offset="1" stopColor="#A78BFA"/>
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
+          <div className="max-w-4xl mx-auto text-center px-4">
+            <h3 className="text-2xl md:text-3xl font-bold mb-12">How We Work With You</h3>
             
-            <p className="text-xl italic opacity-90 font-telugu mt-4">
-              "ఆంధ్ర తెలంగాణ సంస్కృతి సాంకేతిక పరిజ్ఞానంతో మీ వ్యాపారాన్ని అంతర్జాతీయంగా తీసుకెళ్లండి"
-            </p>
-            
-            <div className="mt-4 opacity-75 text-center">
-              <span className="font-medium">— నో.1 ఇంజనీర్</span>
+            {/* Interactive Process Timeline */}
+            <div className="relative">
+              {/* Line connecting all steps */}
+              <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 dark:bg-gray-700 -translate-y-1/2"></div>
+              
+              <div className="relative grid grid-cols-1 md:grid-cols-4 gap-8">
+                {processSteps.map((step, index) => (
+                  <motion.div
+                    key={index}
+                    className="relative"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.2 }}
+                    onMouseEnter={() => setActiveProcess(index)}
+                    onMouseLeave={() => setActiveProcess(null)}
+                  >
+                    <motion.div 
+                      className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center z-10 relative ${
+                        activeProcess === index 
+                          ? 'bg-gradient-to-r from-[#00A19C] to-[#7038FF] text-white' 
+                          : 'bg-white dark:bg-gray-900 text-[#00A19C] border-2 border-[#00A19C]'
+                      }`}
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >
+                      {step.icon}
+                    </motion.div>
+                    
+                    <h4 className="text-lg font-semibold mb-2">{step.title}</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{step.description}</p>
+                    
+                    {/* Step number indicator */}
+                    <div className="absolute top-0 right-0 -mt-2 -mr-2 bg-[#7038FF] text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">
+                      {index + 1}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
           
-          <div className="absolute bottom-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FB923C] to-transparent"></div>
+          <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#7038FF] to-[#00A19C]"></div>
         </motion.div>
         
         <motion.div
@@ -198,20 +366,42 @@ export default function ServicesSection() {
           variants={fadeIn}
           className="mt-16 text-center"
         >
-          <a href="#contact" className="btn-primary inline-block font-telugu">
-            ఇప్పుడే సంప్రదించండి
-          </a>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <a 
+              href="#contact" 
+              className="inline-block py-3 px-8 bg-gradient-to-r from-[#00A19C] to-[#7038FF] text-white font-semibold rounded-full shadow-lg"
+            >
+              Contact Us Now
+            </a>
+          </motion.div>
+          
+          {/* Mouse scroll indicator */}
+          <motion.div 
+            className="mt-8 flex flex-col items-center opacity-60"
+            animate={{ 
+              y: [0, 10, 0],
+            }}
+            transition={{ 
+              duration: 2, 
+              repeat: Infinity 
+            }}
+          >
+            <MousePointer size={20} />
+            <span className="text-xs mt-2">Click on services to learn more</span>
+          </motion.div>
         </motion.div>
       </div>
       
-      {/* Cultural background pattern */}
+      {/* Tech background pattern */}
       <div className="absolute right-0 bottom-0 -z-10 w-48 h-48 opacity-10">
         <svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
-          <path d="M192 0v192H0V0z" fill="none" />
-          <path d="M0 0v192h96V96h96V0z" fill="none" stroke="#831843" strokeWidth="2" />
-          <path d="M96 0v192M0 96h192" fill="none" stroke="#831843" strokeWidth="2" strokeDasharray="4,4" />
-          <circle cx="96" cy="96" r="24" fill="none" stroke="#FB923C" strokeWidth="2" />
-          <circle cx="96" cy="96" r="64" fill="none" stroke="#FB923C" strokeWidth="2" strokeDasharray="8,8" />
+          <circle cx="96" cy="96" r="64" fill="none" stroke="#00A19C" strokeWidth="1" strokeDasharray="4,4" />
+          <circle cx="96" cy="96" r="32" fill="none" stroke="#7038FF" strokeWidth="1" />
+          <path d="M32 96h128M96 32v128" fill="none" stroke="#00A19C" strokeWidth="1" strokeDasharray="2,2" />
+          <path d="M53.7 53.7l84.6 84.6M138.3 53.7L53.7 138.3" fill="none" stroke="#7038FF" strokeWidth="1" strokeDasharray="2,2" />
         </svg>
       </div>
     </section>
