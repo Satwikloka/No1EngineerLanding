@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import TeluguNamaskaramAnimation from "./TeluguNamaskaramAnimation";
 
 interface NavItem {
   label: string;
@@ -18,6 +19,7 @@ const navItems: NavItem[] = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(true);
 
   // Close mobile menu when resizing to desktop
   useEffect(() => {
@@ -39,9 +41,15 @@ export default function Header() {
     window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", handleScroll);
 
+    // Hide welcome message after 5 seconds
+    const timer = setTimeout(() => {
+      setShowWelcome(false);
+    }, 5000);
+
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timer);
     };
   }, [mobileMenuOpen]);
 
@@ -57,6 +65,22 @@ export default function Header() {
           : "bg-transparent"
       }`}
     >
+      <AnimatePresence>
+        {showWelcome && (
+          <motion.div 
+            className="bg-gradient-to-r from-[#222] to-[#111] py-2 px-4 text-center"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="max-w-7xl mx-auto flex justify-center items-center">
+              <TeluguNamaskaramAnimation />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
       <div className="section-container py-4">
         <nav className="flex items-center justify-between">
           <a href="#" className="flex items-center">
