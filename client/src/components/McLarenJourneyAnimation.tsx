@@ -145,12 +145,12 @@ export default function McLarenJourneyAnimation() {
                 transition={{ duration: 3, repeat: Infinity }}
               >
                 <motion.div 
-                  className="w-full h-2 bg-[#FF8000] rounded mb-2"
+                  className="w-full h-2 bg-[#00A19C] rounded mb-2"
                   animate={{ width: ['40%', '80%', '60%', '90%'] }}
                   transition={{ duration: 3, repeat: Infinity }}
                 />
                 <motion.div 
-                  className="w-full h-2 bg-[#0090D4] rounded"
+                  className="w-full h-2 bg-[#333333] rounded"
                   animate={{ width: ['60%', '30%', '70%', '40%'] }}
                   transition={{ duration: 3, repeat: Infinity, delay: 0.2 }}
                 />
@@ -178,21 +178,21 @@ export default function McLarenJourneyAnimation() {
               >
                 <div className="mr-4">
                   <div className="w-6 h-6 rounded-full bg-[#222]" />
-                  <div className="w-4 h-8 bg-[#FF8000] ml-1 mt-1" />
+                  <div className="w-4 h-8 bg-[#00A19C] ml-1 mt-1" />
                 </div>
                 <div>
-                  <Bike className="w-8 h-8 text-[#0090D4]" />
+                  <Bike className="w-8 h-8 text-[#333333]" />
                 </div>
                 <motion.div 
                   className="ml-8 w-8 h-8 flex items-center justify-center bg-[#222] rounded-full"
                   animate={{ rotate: 360 }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  <ChevronRight className="w-4 h-4 text-[#FF8000]" />
+                  <ChevronRight className="w-4 h-4 text-[#00A19C]" />
                 </motion.div>
                 <div className="ml-8">
                   <div className="w-10 h-10 rounded-full border border-[#333] flex items-center justify-center">
-                    <Package className="w-5 h-5 text-[#FF8000]" />
+                    <Package className="w-5 h-5 text-[#00A19C]" />
                   </div>
                 </div>
               </motion.div>
@@ -214,31 +214,31 @@ export default function McLarenJourneyAnimation() {
             <div className="relative">
               <motion.div 
                 className="bg-[#111] w-48 h-32 rounded border border-[#333] p-4"
-                animate={{ boxShadow: ['0 0 0 rgba(0,144,212,0)', '0 0 20px rgba(0,144,212,0.5)', '0 0 0 rgba(0,144,212,0)'] }}
+                animate={{ boxShadow: ['0 0 0 rgba(0,161,156,0)', '0 0 20px rgba(0,161,156,0.5)', '0 0 0 rgba(0,161,156,0)'] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
                 <div className="flex justify-between mb-4">
-                  <div className="w-6 h-6 rounded-full bg-[#FF8000] flex items-center justify-center">
-                    <span className="text-xs text-black font-bold">1</span>
+                  <div className="w-6 h-6 rounded-full bg-[#00A19C] flex items-center justify-center">
+                    <span className="text-xs text-white font-bold">1</span>
                   </div>
-                  <Code className="w-5 h-5 text-[#0090D4]" />
+                  <Code className="w-5 h-5 text-[#333333]" />
                 </div>
                 <motion.div
                   animate={{ opacity: [0.4, 1, 0.4] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
                   <div className="flex gap-1 mb-1">
-                    <div className="h-2 w-6 bg-[#0090D4] rounded-sm"></div>
-                    <div className="h-2 w-10 bg-[#333] rounded-sm"></div>
+                    <div className="h-2 w-6 bg-[#333333] rounded-sm"></div>
+                    <div className="h-2 w-10 bg-[#444] rounded-sm"></div>
                   </div>
                   <div className="flex gap-1 mb-1">
-                    <div className="h-2 w-4 bg-[#333] rounded-sm"></div>
-                    <div className="h-2 w-8 bg-[#FF8000] rounded-sm"></div>
-                    <div className="h-2 w-4 bg-[#333] rounded-sm"></div>
+                    <div className="h-2 w-4 bg-[#444] rounded-sm"></div>
+                    <div className="h-2 w-8 bg-[#00A19C] rounded-sm"></div>
+                    <div className="h-2 w-4 bg-[#444] rounded-sm"></div>
                   </div>
                   <div className="flex gap-1">
-                    <div className="h-2 w-12 bg-[#333] rounded-sm"></div>
-                    <div className="h-2 w-6 bg-[#0090D4] rounded-sm"></div>
+                    <div className="h-2 w-12 bg-[#444] rounded-sm"></div>
+                    <div className="h-2 w-6 bg-[#333333] rounded-sm"></div>
                   </div>
                 </motion.div>
               </motion.div>
@@ -264,21 +264,21 @@ export default function McLarenJourneyAnimation() {
                   animate={{ rotate: [-5, 5, -5] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  <Smartphone className="w-8 h-8 text-[#0090D4]" />
+                  <Smartphone className="w-8 h-8 text-[#333333]" />
                 </motion.div>
                 <motion.div
                   className="w-28 h-20 bg-[#111] rounded border border-[#333] flex items-center justify-center"
                   animate={{ y: [-4, 4, -4] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  <Laptop className="w-10 h-10 text-[#FF8000]" />
+                  <Laptop className="w-10 h-10 text-[#00A19C]" />
                 </motion.div>
                 <motion.div
                   className="w-12 h-12 rounded-full bg-[#111] border border-[#333] flex items-center justify-center"
                   animate={{ scale: [1, 1.1, 1] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 >
-                  <Globe className="w-6 h-6 text-[#0090D4]" />
+                  <Globe className="w-6 h-6 text-[#333333]" />
                 </motion.div>
               </div>
               <div className="absolute -bottom-8 left-0 right-0 text-xs text-center text-gray-500">
@@ -305,7 +305,7 @@ export default function McLarenJourneyAnimation() {
                 >
                   {/* Delivery visualization */}
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 w-16 h-16 bg-[#111] rounded-lg border border-[#333] flex items-center justify-center">
-                    <Package className="w-8 h-8 text-[#FF8000]" />
+                    <Package className="w-8 h-8 text-[#00A19C]" />
                   </div>
                   
                   {/* Digital delivery stream */}
@@ -336,19 +336,19 @@ export default function McLarenJourneyAnimation() {
                   
                   {/* Global receiver */}
                   <div className="absolute right-0 top-1/2 -translate-y-1/2 w-16 h-16 bg-[#111] rounded-lg border border-[#333] flex items-center justify-center">
-                    <Globe className="w-8 h-8 text-[#0090D4]" />
+                    <Globe className="w-8 h-8 text-[#333333]" />
                   </div>
                   
                   {/* Success indicator */}
                   <motion.div
-                    className="absolute -top-2 right-0 w-8 h-8 rounded-full bg-[#111] border border-[#FF8000] flex items-center justify-center"
+                    className="absolute -top-2 right-0 w-8 h-8 rounded-full bg-[#111] border border-[#00A19C] flex items-center justify-center"
                     animate={{ 
                       scale: [1, 1.2, 1],
-                      boxShadow: ['0 0 0 rgba(255,128,0,0)', '0 0 10px rgba(255,128,0,0.8)', '0 0 0 rgba(255,128,0,0)']
+                      boxShadow: ['0 0 0 rgba(0,161,156,0)', '0 0 10px rgba(0,161,156,0.8)', '0 0 0 rgba(0,161,156,0)']
                     }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
-                    <Rocket className="w-4 h-4 text-[#FF8000]" />
+                    <Rocket className="w-4 h-4 text-[#00A19C]" />
                   </motion.div>
                 </motion.div>
               </div>
