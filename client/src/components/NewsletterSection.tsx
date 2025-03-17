@@ -29,21 +29,35 @@ export default function NewsletterSection() {
 
   const { mutate, isPending } = useMutation({
     mutationFn: async (values: NewsletterFormValues) => {
-      const res = await apiRequest("POST", "/api/newsletter", values);
-      return res.json();
+      const formData = new FormData();
+      formData.append('email', values.email);
+      
+      const response = await fetch('https://send.pageclip.co/G4lUfoze3TuY8ZF9wkNvXImociBBpmuP/newsletter', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Authorization': `Bearer ${import.meta.env.PAGECLIP_API_KEY}`
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      
+      return response.json();
     },
-    onSuccess: (data) => {
+    onSuccess: () => {
       toast({
-        title: "Success!",
-        description: data.message || "You've successfully subscribed to our newsletter!",
+        title: "Thanks for subscribing!",
+        description: "You'll receive updates about my latest projects and services.",
       });
       form.reset();
     },
-    onError: (error) => {
+    onError: () => {
       toast({
-        title: "Error",
-        description: error.message || "Failed to subscribe. Please try again.",
         variant: "destructive",
+        title: "Error",
+        description: "Something went wrong. Please try again.",
       });
     },
   });

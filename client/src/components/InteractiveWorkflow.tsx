@@ -88,7 +88,36 @@ function NodeDetailsDialog({ open, onOpenChange, data }: {
                 <h3 className="text-white font-bold mb-3">Interested in {data.label.toLowerCase()} services?</h3>
                 <p className="text-gray-400 text-sm mb-4">Let me know your requirements and I'll get back to you within 24 hours.</p>
                 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form 
+                  action="https://send.pageclip.co/G4lUfoze3TuY8ZF9wkNvXImociBBpmuP/contact-form" 
+                  className="pageclip-form space-y-4" 
+                  method="post"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const form = e.target as HTMLFormElement;
+                    setLoading(true);
+                    
+                    fetch(form.action, {
+                      method: 'POST',
+                      body: new FormData(form),
+                      headers: {
+                        'Authorization': `Bearer ${import.meta.env.PAGECLIP_API_KEY}`
+                      }
+                    })
+                    .then(response => {
+                      if (!response.ok) throw new Error('Network response was not ok');
+                      setFormSubmitted(true);
+                    })
+                    .catch(error => {
+                      console.error('Error:', error);
+                      alert('There was an error submitting the form. Please try again.');
+                    })
+                    .finally(() => {
+                      setLoading(false);
+                    });
+                  }}
+                >
+                  <input type="hidden" name="service" value={data.label} />
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">Name</label>
                     <input 
