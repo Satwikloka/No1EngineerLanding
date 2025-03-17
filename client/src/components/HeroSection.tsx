@@ -39,12 +39,69 @@ export default function HeroSection() {
       
       <div className="section-container">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
-          {/* Left side: Road to Requirements Animation */}
+          {/* Left side: Content & Call to Action */}
           <motion.div 
             className="lg:w-1/2"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+          >
+            <div className="relative">
+              {/* Mercedes F1 inspired accent line */}
+              <div className="absolute left-0 top-0 w-1 h-20 bg-[#00A19C]"></div>
+              
+              <div className="pl-6">
+                <h1 className="title-xl mb-6">
+                  On-site Requirements Gathering
+                </h1>
+                
+                <p className="text-lg md:text-xl text-slate-600 max-w-xl mb-8">
+                  We don't just build from specifications — we visit your location to understand your business environment, workflows, and challenges firsthand. This ensures Mercedes-AMG level precision in every solution.
+                </p>
+                
+                <div className="space-y-4 mb-8">
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-[#00A19C] flex items-center justify-center flex-shrink-0 mt-1">
+                      <div className="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+                    <p className="text-slate-600">Face-to-face meetings with stakeholders</p>
+                  </div>
+                  
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-[#00A19C] flex items-center justify-center flex-shrink-0 mt-1">
+                      <div className="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+                    <p className="text-slate-600">Workflow observation and documentation</p>
+                  </div>
+                  
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-[#00A19C] flex items-center justify-center flex-shrink-0 mt-1">
+                      <div className="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+                    <p className="text-slate-600">User interviews and pain point identification</p>
+                  </div>
+                </div>
+                
+                <div className="flex flex-wrap gap-4">
+                  <a href="#contact" className="btn-primary">
+                    <span className="relative z-10">Schedule a Visit</span>
+                  </a>
+                  <a href="#workflow" className="btn-outline">
+                    <span className="flex items-center gap-2">
+                      Explore My Process <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+          
+          {/* Right side: Road to Requirements Animation */}
+          <motion.div 
+            className="lg:w-1/2"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="relative h-[350px] md:h-[450px]">
               {/* Road path */}
@@ -139,63 +196,6 @@ export default function HeroSection() {
                 <p className="text-sm">Transforming ideas into Mercedes-quality solutions</p>
                 <div className="absolute -bottom-2 right-5 w-4 h-4 bg-[#00A19C] transform rotate-45" />
               </motion.div>
-            </div>
-          </motion.div>
-          
-          {/* Right side: Content & Call to Action */}
-          <motion.div 
-            className="lg:w-1/2"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="relative">
-              {/* Mercedes F1 inspired accent line */}
-              <div className="absolute left-0 top-0 w-1 h-20 bg-[#00A19C]"></div>
-              
-              <div className="pl-6">
-                <h1 className="title-xl mb-6">
-                  On-site Requirements Gathering
-                </h1>
-                
-                <p className="text-lg md:text-xl text-slate-600 max-w-xl mb-8">
-                  We don't just build from specifications — we visit your location to understand your business environment, workflows, and challenges firsthand. This ensures Mercedes-AMG level precision in every solution.
-                </p>
-                
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#00A19C] flex items-center justify-center flex-shrink-0 mt-1">
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
-                    </div>
-                    <p className="text-slate-600">Face-to-face meetings with stakeholders</p>
-                  </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#00A19C] flex items-center justify-center flex-shrink-0 mt-1">
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
-                    </div>
-                    <p className="text-slate-600">Workflow observation and documentation</p>
-                  </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#00A19C] flex items-center justify-center flex-shrink-0 mt-1">
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
-                    </div>
-                    <p className="text-slate-600">User interviews and pain point identification</p>
-                  </div>
-                </div>
-                
-                <div className="flex flex-wrap gap-4">
-                  <a href="#contact" className="btn-primary">
-                    <span className="relative z-10">Schedule a Visit</span>
-                  </a>
-                  <a href="#workflow" className="btn-outline">
-                    <span className="flex items-center gap-2">
-                      Explore My Process <ArrowRight className="w-4 h-4" />
-                    </span>
-                  </a>
-                </div>
-              </div>
             </div>
           </motion.div>
         </div>
