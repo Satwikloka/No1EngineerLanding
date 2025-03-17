@@ -32,17 +32,18 @@
     @apply py-20 md:py-32 relative;
   }
 
-  /* Modern 3D flow colors */
+  /* Mercedes-inspired color palette */
   :root {
-    --color-purple-cream: #A78BFA;
-    --color-purple-light: #C4B5FD;
-    --color-deep-purple: #7C3AED;
-    --color-orange-cream: #FB923C;
-    --color-orange-light: #FDBA74;
-    --color-orange-deep: #EA580C;
-    --color-teal-cream: #5EEAD4;
-    --color-teal-light: #99F6E4;
-    --color-gold: #FCD34D;
+    --color-teal: #00A19C;
+    --color-teal-light: #67C7C4;
+    --color-teal-dark: #00857F;
+    --color-silver: #CFD0D0;
+    --color-silver-light: #E5E5E5;
+    --color-gray: #333333;
+    --color-gray-light: #666666;
+    --color-gray-dark: #222222;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
     --color-slate: #0F172A;
     --color-slate-light: #334155;
   }
@@ -79,29 +80,29 @@
   /* Typography */
   .title-xl {
     @apply text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight;
-    background: linear-gradient(to right, var(--color-deep-purple), var(--color-purple-cream));
+    background: linear-gradient(to right, var(--color-teal), var(--color-teal-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
   .title-lg {
     @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
-    background: linear-gradient(to right, var(--color-deep-purple), var(--color-purple-cream));
+    background: linear-gradient(to right, var(--color-teal), var(--color-teal-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
   .title-md {
     @apply text-3xl md:text-4xl font-bold tracking-tight;
-    background: linear-gradient(to right, var(--color-deep-purple), var(--color-orange-deep));
+    background: linear-gradient(to right, var(--color-teal), var(--color-gray));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
-  /* Modern Buttons */
+  /* Mercedes-inspired Buttons */
   .btn-primary {
     @apply px-6 py-3 rounded-md transition-all duration-300 shadow-lg;
-    background: linear-gradient(135deg, var(--color-deep-purple), var(--color-purple-cream));
+    background: linear-gradient(135deg, var(--color-teal), var(--color-teal-light));
     color: white;
     position: relative;
     overflow: hidden;
@@ -111,7 +112,7 @@
   
   .btn-primary:hover {
     transform: translateY(-2px) translateZ(0);
-    box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.5);
+    box-shadow: 0 10px 25px -5px rgba(0, 161, 156, 0.5);
   }
   
   .btn-primary::before {
@@ -121,7 +122,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--color-orange-cream), var(--color-orange-deep));
+    background: linear-gradient(135deg, var(--color-teal-dark), var(--color-teal));
     transition: all 0.6s cubic-bezier(0.65, 0, 0.35, 1);
     z-index: -1;
   }
@@ -135,16 +136,16 @@
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    border-color: var(--color-purple-cream);
-    color: var(--color-deep-purple);
+    border-color: var(--color-gray);
+    color: var(--color-gray);
     transform: translateZ(0);
   }
   
   .btn-outline:hover {
-    background: linear-gradient(135deg, var(--color-purple-cream), var(--color-deep-purple));
+    background: linear-gradient(135deg, var(--color-gray-light), var(--color-gray));
     color: white;
     transform: translateY(-2px) translateZ(0);
-    box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.4);
+    box-shadow: 0 10px 25px -5px rgba(51, 51, 51, 0.4);
   }
   
   /* Modern Cards */

@@ -935,96 +935,113 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            {/* Premium McLaren-inspired brand showcase */}
+            {/* Premium Mercedes-inspired profile card */}
             <motion.div 
-              className="relative w-[450px] h-[450px] rounded-none border-2 border-[#FF8000] shadow-xl overflow-hidden"
-              whileHover={{ scale: 1.02 }}
+              className="relative w-[450px] h-[450px] rounded-lg border border-gray-200 shadow-2xl overflow-hidden bg-white"
+              whileHover={{ y: -5 }}
               transition={{ duration: 0.4 }}
             >
-              {/* McLaren-style background */}
-              <div className="absolute inset-0 bg-black"></div>
+              {/* Mercedes style top accent */}
+              <div className="absolute top-0 left-0 right-0 h-2 bg-[#00A19C]"></div>
               
-              {/* McLaren Papaya Racing Stripe */}
-              <div className="absolute h-full w-12 left-0 top-0 bg-[#FF8000]"></div>
+              {/* Silver arrow accent */}
+              <div className="absolute left-0 top-2 bottom-0 w-1 bg-gradient-to-b from-[#00A19C] to-gray-300"></div>
               
-              {/* McLaren Blue Bottom Accent */}
-              <div className="absolute left-0 bottom-0 h-12 w-full bg-[#0090D4]"></div>
-              
-              {/* McLaren Logo-inspired element */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+              {/* Profile Image */}
+              <div className="pt-8 px-6 flex justify-center">
                 <motion.div 
-                  className="relative w-64 h-64"
-                  animate={{ rotateY: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="w-32 h-32 rounded-full bg-gray-200 border-4 border-[#00A19C] overflow-hidden shadow-lg"
+                  animate={{ 
+                    boxShadow: ['0 0 0 rgba(0, 161, 156, 0.3)', '0 0 16px rgba(0, 161, 156, 0.5)', '0 0 0 rgba(0, 161, 156, 0.3)']
+                  }}
+                  transition={{ duration: 3, repeat: Infinity }}
                 >
-                  {/* Speedmark-inspired element */}
-                  <motion.div 
-                    className="absolute w-64 h-20 bg-[#FF8000] rounded-full"
-                    style={{ clipPath: "polygon(0 50%, 100% 0, 100% 40%, 50% 100%, 0 40%)" }}
-                    animate={{ scale: [1, 1.05, 1] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                  ></motion.div>
-                  
-                  {/* Blue accent */}
-                  <motion.div 
-                    className="absolute top-14 w-40 h-10 bg-[#0090D4] rounded-full left-12"
-                    style={{ clipPath: "polygon(0 0, 100% 50%, 100% 100%, 0 50%)" }}
-                    animate={{ scale: [1, 1.1, 1] }}
-                    transition={{ duration: 2, delay: 0.5, repeat: Infinity }}
-                  ></motion.div>
+                  <img 
+                    src="/attached_assets/Copy_of_passpic_satwik-removebg-preview.png" 
+                    alt="Satwik Loka Profile" 
+                    className="w-full h-full object-cover"
+                  />
                 </motion.div>
               </div>
               
-              {/* Racing checkerboard pattern */}
-              <div className="absolute bottom-16 left-16 right-16 h-12">
-                <div className="grid grid-cols-8 h-full">
-                  {Array.from({ length: 8 }).map((_, i) => (
-                    <div key={i} className={`h-full ${i % 2 === 0 ? 'bg-white' : 'bg-black'}`}></div>
-                  ))}
+              {/* Profile Info */}
+              <div className="pt-6 px-8 text-center">
+                <motion.h3
+                  className="text-2xl font-bold text-gray-800"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  Satwik Loka
+                </motion.h3>
+                <motion.p
+                  className="text-[#00A19C] font-medium"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  App Developer & Digital Nomad
+                </motion.p>
+              </div>
+              
+              {/* Stats Grid */}
+              <div className="mt-8 grid grid-cols-3 gap-4 px-6">
+                <motion.div 
+                  className="bg-gray-50 p-4 rounded-lg text-center"
+                  whileHover={{ y: -3, backgroundColor: "#f8f8f8" }}
+                >
+                  <h4 className="text-3xl font-bold text-[#00A19C]">7+</h4>
+                  <p className="text-sm text-gray-600">Years Experience</p>
+                </motion.div>
+                
+                <motion.div 
+                  className="bg-gray-50 p-4 rounded-lg text-center"
+                  whileHover={{ y: -3, backgroundColor: "#f8f8f8" }}
+                >
+                  <h4 className="text-3xl font-bold text-[#00A19C]">120+</h4>
+                  <p className="text-sm text-gray-600">Projects</p>
+                </motion.div>
+                
+                <motion.div 
+                  className="bg-gray-50 p-4 rounded-lg text-center"
+                  whileHover={{ y: -3, backgroundColor: "#f8f8f8" }}
+                >
+                  <h4 className="text-3xl font-bold text-[#00A19C]">30+</h4>
+                  <p className="text-sm text-gray-600">Clients</p>
+                </motion.div>
+              </div>
+              
+              {/* Skills */}
+              <div className="mt-8 px-6">
+                <h4 className="text-sm font-medium text-gray-600 mb-3">TECHNICAL EXPERTISE</h4>
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 rounded-full bg-[#00A19C] mr-2"></div>
+                    <span className="text-sm">React Native</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 rounded-full bg-[#00A19C] mr-2"></div>
+                    <span className="text-sm">Flutter</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 rounded-full bg-[#00A19C] mr-2"></div>
+                    <span className="text-sm">React.js</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 rounded-full bg-[#00A19C] mr-2"></div>
+                    <span className="text-sm">Node.js</span>
+                  </div>
                 </div>
               </div>
               
-              {/* Brand name with McLaren typography style */}
-              <div className="absolute top-24 left-0 right-0 mx-auto text-center">
+              {/* Mercedes-inspired badge */}
+              <div className="absolute bottom-6 right-6">
                 <motion.div
-                  className="text-4xl font-bold text-white tracking-widest uppercase"
-                  animate={{ opacity: [0.9, 1, 0.9] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  style={{ textShadow: "0 0 10px rgba(255,128,0,0.8)" }}
+                  className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 shadow-md overflow-hidden border-2 border-[#00A19C]"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                 >
-                  NO.1
-                </motion.div>
-                <motion.div
-                  className="text-2xl font-bold text-[#FF8000] uppercase tracking-wider mt-1"
-                  animate={{ opacity: [0.8, 1, 0.8] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
-                >
-                  ENGINEER
-                </motion.div>
-              </div>
-              
-              {/* Racing number */}
-              <div className="absolute bottom-32 right-8">
-                <motion.div 
-                  className="text-8xl font-bold text-[#FF8000] opacity-60"
-                  animate={{ 
-                    y: [0, -5, 0],
-                    textShadow: ['0 0 8px rgba(255,128,0,0.3)', '0 0 16px rgba(255,128,0,0.6)', '0 0 8px rgba(255,128,0,0.3)']
-                  }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                >
-                  1
-                </motion.div>
-              </div>
-              
-              {/* Name banner in McLaren style */}
-              <div className="absolute bottom-[60px] left-0 right-0 mx-auto w-max">
-                <motion.div
-                  className="bg-black text-white px-8 py-2 border-l-4 border-[#FF8000] text-lg font-bold uppercase tracking-widest"
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                >
-                  Satwik Loka
+                  <div className="text-xl font-bold text-[#00A19C]">NO.1</div>
                 </motion.div>
               </div>
             </motion.div>
@@ -1073,12 +1090,12 @@ export default function HeroSection() {
             className="card-glass flex flex-col space-y-4 group" 
             whileHover={{ y: -10, transition: { duration: 0.3 } }}
           >
-            <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#FF8000] to-[#FF9D45] flex items-center justify-center text-white mb-4 shadow-lg shadow-orange-200">
+            <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#00A19C] to-[#67C7C4] flex items-center justify-center text-white mb-4 shadow-lg shadow-teal-100">
               <Code className="h-6 w-6" />
             </div>
             <h3 className="text-lg font-semibold">Tech Expert</h3>
             <p className="text-slate-600">Bringing global tech expertise to local markets with personalized solutions</p>
-            <div className="flex items-center space-x-2 text-[#FF8000] text-sm transition-all">
+            <div className="flex items-center space-x-2 text-[#00A19C] text-sm transition-all">
               <span className="font-medium">App Development</span>
             </div>
           </motion.div>
@@ -1087,12 +1104,12 @@ export default function HeroSection() {
             className="card-glass flex flex-col space-y-4 group" 
             whileHover={{ y: -10, transition: { duration: 0.3 } }}
           >
-            <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#0090D4] to-[#60B6E1] flex items-center justify-center text-white mb-4 shadow-lg shadow-blue-200">
+            <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#333333] to-[#666666] flex items-center justify-center text-white mb-4 shadow-lg shadow-gray-200">
               <Share2 className="h-6 w-6" />
             </div>
             <h3 className="text-lg font-semibold">Personal Consultation</h3>
             <p className="text-slate-600">Meeting clients in person to understand requirements before delivering remotely</p>
-            <div className="flex items-center space-x-2 text-[#0090D4] text-sm transition-all">
+            <div className="flex items-center space-x-2 text-gray-700 text-sm transition-all">
               <span className="font-medium">Digital Solutions</span>
             </div>
           </motion.div>
@@ -1101,12 +1118,12 @@ export default function HeroSection() {
             className="card-glass flex flex-col space-y-4 group" 
             whileHover={{ y: -10, transition: { duration: 0.3 } }}
           >
-            <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-slate-700 to-slate-800 flex items-center justify-center text-white mb-4 shadow-lg shadow-slate-200">
+            <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#CFD0D0] to-[#E5E5E5] flex items-center justify-center text-gray-800 mb-4 shadow-lg shadow-gray-200">
               <Globe className="h-6 w-6" />
             </div>
             <h3 className="text-lg font-semibold">Global Delivery</h3>
             <p className="text-slate-600">Providing premium development services with world-class expertise and rapid delivery</p>
-            <div className="flex items-center space-x-2 text-slate-700 text-sm transition-all">
+            <div className="flex items-center space-x-2 text-gray-500 text-sm transition-all">
               <span className="font-medium">Web & Mobile Development</span>
             </div>
           </motion.div>
