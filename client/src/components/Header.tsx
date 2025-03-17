@@ -9,6 +9,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: "గురించి", href: "#about" },
+  { label: "వర్క్‌ఫ్లో", href: "#workflow" },
   { label: "సేవలు", href: "#services" },
   { label: "ఫీచర్స్", href: "#features" },
   { label: "సంప్రదించండి", href: "#contact" },
