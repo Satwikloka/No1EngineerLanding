@@ -3,6 +3,8 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import TeluguNamaskaramOpener from "@/components/TeluguNamaskaramOpener";
+import { useState, useEffect } from "react";
 
 function Router() {
   return (
@@ -14,8 +16,24 @@ function Router() {
 }
 
 function App() {
+  const [showOpener, setShowOpener] = useState(true);
+  
+  // Check if we've shown the opener before in this session
+  useEffect(() => {
+    const hasSeenOpener = sessionStorage.getItem('hasSeenOpener');
+    if (hasSeenOpener) {
+      setShowOpener(false);
+    }
+  }, []);
+  
+  const handleOpenerComplete = () => {
+    setShowOpener(false);
+    sessionStorage.setItem('hasSeenOpener', 'true');
+  };
+  
   return (
     <QueryClientProvider client={queryClient}>
+      {showOpener && <TeluguNamaskaramOpener onComplete={handleOpenerComplete} />}
       <Router />
     </QueryClientProvider>
   );
