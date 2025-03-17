@@ -41,15 +41,15 @@ function ContactForm() {
     },
     onSuccess: () => {
       toast({
-        title: "Message sent!",
-        description: "Thank you for your message. We'll get back to you soon.",
+        title: "సందేశం పంపబడింది!",
+        description: "మీ సందేశానికి ధన్యవాదాలు. మేము త్వరలో మీకు తిరిగి వస్తాము.",
       });
       form.reset();
     },
     onError: (error) => {
       toast({
         title: "Error",
-        description: error.message || "Failed to send message. Please try again.",
+        description: error.message || "సందేశం పంపడం విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి.",
         variant: "destructive",
       });
     },
@@ -61,17 +61,21 @@ function ContactForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Full Name</FormLabel>
+              <FormLabel className="font-telugu text-lg">పూర్తి పేరు</FormLabel>
               <FormControl>
-                <Input placeholder="Your name" {...field} />
+                <Input 
+                  placeholder="మీ పేరు" 
+                  {...field} 
+                  className="border-black focus:border-black focus:ring-0 rounded-none h-12 font-telugu" 
+                />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="font-telugu" />
             </FormItem>
           )}
         />
@@ -81,11 +85,15 @@ function ContactForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email Address</FormLabel>
+              <FormLabel className="font-telugu text-lg">ఇమెయిల్</FormLabel>
               <FormControl>
-                <Input placeholder="your.email@example.com" {...field} />
+                <Input 
+                  placeholder="your.email@example.com" 
+                  {...field} 
+                  className="border-black focus:border-black focus:ring-0 rounded-none h-12" 
+                />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="font-telugu" />
             </FormItem>
           )}
         />
@@ -95,11 +103,15 @@ function ContactForm() {
           name="subject"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Subject</FormLabel>
+              <FormLabel className="font-telugu text-lg">విషయం</FormLabel>
               <FormControl>
-                <Input placeholder="How can we help you?" {...field} />
+                <Input 
+                  placeholder="ఏ విషయంలో మేము సహాయపడగలము?" 
+                  {...field} 
+                  className="border-black focus:border-black focus:ring-0 rounded-none h-12 font-telugu" 
+                />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="font-telugu" />
             </FormItem>
           )}
         />
@@ -109,22 +121,25 @@ function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel className="font-telugu text-lg">సందేశం</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="Tell us more about your project, needs, and timeline" 
-                  className="resize-none" 
-                  rows={4} 
+                  placeholder="మీ ప్రాజెక్ట్, అవసరాలు మరియు టైమ్‌లైన్ గురించి మాకు మరింత చెప్పండి" 
+                  className="resize-none border-black focus:border-black focus:ring-0 rounded-none min-h-[150px] font-telugu" 
                   {...field} 
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="font-telugu" />
             </FormItem>
           )}
         />
         
-        <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-600" disabled={isPending}>
-          {isPending ? "Sending..." : "Send Message"}
+        <Button 
+          type="submit" 
+          className="w-full btn-primary py-6 font-telugu text-lg" 
+          disabled={isPending}
+        >
+          {isPending ? "పంపుతోంది..." : "సందేశం పంపండి"}
         </Button>
       </form>
     </Form>
@@ -139,13 +154,13 @@ interface ContactInfoProps {
 
 function ContactInfo({ icon, title, info }: ContactInfoProps) {
   return (
-    <div className="flex items-start gap-4">
-      <div className="w-10 h-10 bg-blue-500/10 text-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+    <div className="flex items-start gap-6 mb-8">
+      <div className="text-black">
         {icon}
       </div>
       <div>
-        <h3 className="text-lg font-semibold text-primary mb-1">{title}</h3>
-        <p className="text-gray-700">{info}</p>
+        <h3 className="text-lg font-semibold mb-2 font-telugu">{title}</h3>
+        <p className="opacity-70 font-telugu">{info}</p>
       </div>
     </div>
   );
@@ -154,19 +169,19 @@ function ContactInfo({ icon, title, info }: ContactInfoProps) {
 export default function ContactSection() {
   const contactInfoItems = [
     {
-      icon: <MapPin />,
-      title: "Our Location",
-      info: "123 Innovation Drive, Tech City, TC 10101"
+      icon: <MapPin size={24} />,
+      title: "మా స్థానం",
+      info: "123 హైటెక్ సిటీ, హైదరాబాద్, తెలంగాణ 500081"
     },
     {
-      icon: <Mail />,
-      title: "Email Us",
+      icon: <Mail size={24} />,
+      title: "ఇమెయిల్",
       info: "info@no1.engineer"
     },
     {
-      icon: <Phone />,
-      title: "Call Us",
-      info: "+1 (555) 123-4567"
+      icon: <Phone size={24} />,
+      title: "కాల్ చేయండి",
+      info: "+91 9876 543 210"
     }
   ];
 
@@ -178,55 +193,61 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-white">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={fadeIn}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Get in Touch</h2>
-              <p className="text-gray-700 mb-8">
-                Ready to transform your ideas into reality? Contact us today to discuss how we can help you achieve your engineering goals.
-              </p>
-              
-              <div className="space-y-6">
-                {contactInfoItems.map((item, index) => (
-                  <ContactInfo key={index} {...item} />
+    <section id="contact" className="bg-white">
+      <div className="section-container">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+          className="max-w-3xl mb-20"
+        >
+          <h2 className="title-lg mb-12 font-telugu">సంప్రదించండి</h2>
+          <p className="text-xl md:text-2xl font-telugu">
+            మీ ఆలోచనలను నిజంగా మార్చడానికి సిద్ధంగా ఉన్నారా? మీ వ్యాపార లక్ష్యాలను సాధించడంలో మేము ఎలా సహాయపడగలమో చర్చించడానికి నేడే మమ్మల్ని సంప్రదించండి.
+          </p>
+        </motion.div>
+        
+        <div className="grid md:grid-cols-2 gap-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <div className="mb-16">
+              {contactInfoItems.map((item, index) => (
+                <ContactInfo key={index} {...item} />
+              ))}
+            </div>
+            
+            <div>
+              <h3 className="text-xl font-semibold mb-6 font-telugu">సోషల్ మీడియాలో కనెక్ట్ అవ్వండి</h3>
+              <div className="flex space-x-6">
+                {socialLinks.map((social, index) => (
+                  <a 
+                    key={index}
+                    href={social.href} 
+                    className="border border-black p-3 hover:bg-black hover:text-white transition-colors"
+                    aria-label="Social media link"
+                  >
+                    {social.icon}
+                  </a>
                 ))}
               </div>
-              
-              <div className="mt-10">
-                <h3 className="text-lg font-semibold text-primary mb-4">Connect With Us</h3>
-                <div className="flex space-x-4">
-                  {socialLinks.map((social, index) => (
-                    <a 
-                      key={index}
-                      href={social.href} 
-                      className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-blue-500 hover:text-white transition-colors"
-                      aria-label="Social media link"
-                    >
-                      {social.icon}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-gray-50 p-8 rounded-lg shadow-md"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={slideUp}
-            >
-              <h3 className="text-2xl font-semibold text-primary mb-6">Send Us a Message</h3>
-              <ContactForm />
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            className="border border-black p-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={slideUp}
+          >
+            <h3 className="text-xl font-semibold mb-8 font-telugu">మాకు సందేశం పంపండి</h3>
+            <ContactForm />
+          </motion.div>
         </div>
       </div>
     </section>

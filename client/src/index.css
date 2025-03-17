@@ -8,7 +8,8 @@
   }
 
   body {
-    @apply antialiased bg-background text-foreground;
+    @apply antialiased bg-white text-black;
+    font-family: "Baloo Tammudu 2", system-ui, -apple-system, sans-serif;
   }
   
   .font-telugu {
@@ -17,6 +18,39 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-telugu;
+    @apply font-telugu text-black;
+  }
+  
+  section {
+    @apply py-20 md:py-24;
+  }
+  
+  /* Cult Landing Page Style Classes */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 md:px-6;
+  }
+  
+  .title-xl {
+    @apply text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter;
+  }
+  
+  .title-lg {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter;
+  }
+  
+  .title-md {
+    @apply text-3xl md:text-4xl font-bold tracking-tighter;
+  }
+  
+  .btn-primary {
+    @apply bg-black text-white px-6 py-3 rounded-none border border-black hover:bg-white hover:text-black transition-colors duration-300;
+  }
+  
+  .btn-outline {
+    @apply bg-white text-black px-6 py-3 rounded-none border border-black hover:bg-black hover:text-white transition-colors duration-300;
+  }
+  
+  .card {
+    @apply border border-black p-6 hover:bg-black hover:text-white transition-colors duration-300;
   }
 }
