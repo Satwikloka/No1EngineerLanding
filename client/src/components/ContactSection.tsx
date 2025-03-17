@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Mail, Phone, Twitter, Linkedin, Github, Instagram } from "lucide-react";
+import { MapPin, Mail, Phone, Twitter, Linkedin, Github, Instagram, Globe } from "lucide-react";
 import { fadeIn, slideUp } from "@/lib/framer-animations";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -171,25 +171,36 @@ export default function ContactSection() {
     {
       icon: <MapPin size={24} />,
       title: "మా స్థానం",
-      info: "123 హైటెక్ సిటీ, హైదరాబాద్, తెలంగాణ 500081"
+      info: "హైదరాబాద్, తెలంగాణ"
     },
     {
       icon: <Mail size={24} />,
       title: "ఇమెయిల్",
-      info: "info@no1.engineer"
+      info: "satwikloka321@gmail.com"
     },
     {
       icon: <Phone size={24} />,
       title: "కాల్ చేయండి",
-      info: "+91 9876 543 210"
+      info: "+91 728807097"
+    }
+  ];
+
+  const portfolioLinks = [
+    { 
+      name: "www.makservices.in", 
+      url: "https://www.makservices.in" 
+    },
+    { 
+      name: "www.makerdeal.in", 
+      url: "https://www.makerdeal.in" 
     }
   ];
 
   const socialLinks = [
-    { icon: <Twitter className="h-5 w-5" />, href: "#" },
-    { icon: <Linkedin className="h-5 w-5" />, href: "#" },
-    { icon: <Github className="h-5 w-5" />, href: "#" },
-    { icon: <Instagram className="h-5 w-5" />, href: "#" }
+    { icon: <Twitter className="h-5 w-5" />, href: "https://twitter.com" },
+    { icon: <Linkedin className="h-5 w-5" />, href: "https://linkedin.com" },
+    { icon: <Github className="h-5 w-5" />, href: "https://github.com" },
+    { icon: <Instagram className="h-5 w-5" />, href: "https://instagram.com" }
   ];
 
   return (
@@ -219,6 +230,29 @@ export default function ContactSection() {
               {contactInfoItems.map((item, index) => (
                 <ContactInfo key={index} {...item} />
               ))}
+            </div>
+            
+            <div className="mb-12">
+              <h3 className="text-xl font-semibold mb-6 font-telugu">పోర్ట్‌ఫోలియో లింక్స్</h3>
+              <div className="space-y-4">
+                {portfolioLinks.map((link, index) => (
+                  <a 
+                    key={index}
+                    href={link.url}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="font-telugu flex items-center space-x-2 text-[#831843] hover:underline"
+                  >
+                    <div className="p-2 rounded-full bg-gradient-to-r from-[#A78BFA] to-[#FB923C] opacity-80">
+                      <Globe className="h-4 w-4 text-white" />
+                    </div>
+                    <span>{link.name}</span>
+                  </a>
+                ))}
+                <p className="mt-2 text-sm opacity-70 font-telugu">
+                  Play Store లో కూడా అందుబాటులో ఉన్నాయి
+                </p>
+              </div>
             </div>
             
             <div>
