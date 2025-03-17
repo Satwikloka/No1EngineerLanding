@@ -131,31 +131,6 @@ export default function Home() {
       <ServicesSection />
       <TestimonialsSection />
       <ContactSection />
-      
-      {/* Digital Nomad Journey - Moved to bottom */}
-      <section id="journey" className="container py-16 mx-auto px-4 md:px-6">
-        <motion.div 
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 text-[#00A19C]">My Digital Nomad Journey</h2>
-          <p className="text-base md:text-lg max-w-3xl mx-auto text-gray-600 dark:text-gray-400">
-            Experience my unique business approach: Personal visits for gathering requirements, 
-            and remote delivery of high-quality solutions with world-class development expertise.
-          </p>
-        </motion.div>
-        
-        <div className="relative h-[400px] md:h-[450px] bg-[#111] rounded-lg border border-[#333] shadow-xl overflow-hidden">
-          <McLarenJourneyAnimation />
-          <div className="absolute bottom-4 left-0 w-full text-center text-sm text-gray-500">
-            Move your mouse from left to right to explore each phase of my business journey ⟵⟶
-          </div>
-        </div>
-      </section>
-      
       <NewsletterSection />
       <Footer />
     </div>
