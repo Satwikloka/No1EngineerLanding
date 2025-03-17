@@ -8,8 +8,9 @@
   }
 
   body {
-    @apply antialiased bg-white text-black;
+    @apply antialiased bg-white text-[#331D2C];
     font-family: "Baloo Tammudu 2", system-ui, -apple-system, sans-serif;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23a78bfa' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
   }
   
   .font-telugu {
@@ -18,39 +19,187 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-telugu text-black;
+    @apply font-telugu text-[#331D2C];
   }
   
   section {
     @apply py-20 md:py-24;
   }
+
+  /* Custom Telugu cultural colors */
+  :root {
+    --color-purple-cream: #A78BFA;
+    --color-deep-purple: #831843;
+    --color-orange-cream: #FB923C;
+    --color-orange-deep: #9A3412;
+    --color-teal-cream: #5EEAD4;
+    --color-cultural-gold: #FCD34D;
+  }
   
-  /* Cult Landing Page Style Classes */
+  /* Telugu Cultural Border Patterns */
+  .telugu-border-pattern {
+    position: relative;
+  }
+  
+  .telugu-border-pattern::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23a78bfa' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6h-2c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  /* Section Container */
   .section-container {
     @apply max-w-7xl mx-auto px-4 md:px-6;
   }
   
+  /* Typography */
   .title-xl {
     @apply text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter;
+    background: linear-gradient(to right, var(--color-deep-purple), var(--color-purple-cream));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   
   .title-lg {
     @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter;
+    background: linear-gradient(to right, var(--color-deep-purple), var(--color-purple-cream));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   
   .title-md {
     @apply text-3xl md:text-4xl font-bold tracking-tighter;
+    background: linear-gradient(to right, var(--color-deep-purple), var(--color-orange-deep));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   
+  /* Buttons */
   .btn-primary {
-    @apply bg-black text-white px-6 py-3 rounded-none border border-black hover:bg-white hover:text-black transition-colors duration-300;
+    @apply px-6 py-3 rounded-md transition-colors duration-300;
+    background: linear-gradient(135deg, var(--color-purple-cream), var(--color-deep-purple));
+    color: white;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .btn-primary:hover {
+    box-shadow: 0 4px 12px rgba(131, 24, 67, 0.3);
+  }
+  
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-orange-cream), var(--color-orange-deep));
+    transition: all 0.5s ease;
+    z-index: -1;
+  }
+  
+  .btn-primary:hover::before {
+    left: 0;
   }
   
   .btn-outline {
-    @apply bg-white text-black px-6 py-3 rounded-none border border-black hover:bg-black hover:text-white transition-colors duration-300;
+    @apply bg-white px-6 py-3 rounded-md border transition-all duration-300;
+    border-color: var(--color-purple-cream);
+    color: var(--color-deep-purple);
   }
   
+  .btn-outline:hover {
+    background: linear-gradient(135deg, var(--color-purple-cream), var(--color-deep-purple));
+    color: white;
+    box-shadow: 0 4px 12px rgba(131, 24, 67, 0.3);
+  }
+  
+  /* Cards */
   .card {
-    @apply border border-black p-6 hover:bg-black hover:text-white transition-colors duration-300;
+    @apply p-6 rounded-md shadow-md transition-all duration-300;
+    background: white;
+    border: 1px solid #f3f4f6;
+    box-shadow: 0 1px 2px rgba(131, 24, 67, 0.07);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 30px rgba(131, 24, 67, 0.12);
+    transform: translateY(-5px);
+  }
+  
+  .card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(to right, var(--color-purple-cream), var(--color-orange-cream));
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.5s ease;
+    z-index: -1;
+  }
+  
+  .card:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  
+  /* Animation utilities */
+  .hover-lift {
+    transition: transform 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Cultural decoration elements */
+  .cultural-decoration {
+    position: relative;
+  }
+  
+  .cultural-decoration::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, var(--color-orange-cream), var(--color-teal-cream));
+    border-radius: 3px;
+  }
+  
+  /* Animation keyframes */
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 0.3; }
+  }
+  
+  @keyframes slideLeftToRight {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 }
