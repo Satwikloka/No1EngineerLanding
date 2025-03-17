@@ -167,7 +167,7 @@ export default function HeroSection() {
           className="lg:w-1/2 mb-16 lg:mb-0 lg:pr-12"
           variants={slideIn('left', '', 0.3, 0.8)}
           initial="hidden"
-          animate="show"
+          animate="visible"
         >
           {/* Badges */}
           <motion.div 
@@ -272,7 +272,7 @@ export default function HeroSection() {
           className="lg:w-1/2 flex justify-center"
           variants={slideIn('right', '', 0.5, 0.8)}
           initial="hidden"
-          animate="show"
+          animate="visible"
         >
           <div className="relative">
             {/* Animated circles background */}
@@ -295,7 +295,7 @@ export default function HeroSection() {
             >
               <div className="overflow-hidden rounded-full border-4 border-black/50 max-w-[300px] max-h-[300px] md:max-w-[400px] md:max-h-[400px]">
                 <img 
-                  src="attached_assets/Copy_of_passpic_satwik-removebg-preview.png" 
+                  src="/images/Copy_of_passpic_satwik-removebg-preview.png" 
                   alt="Satwik - no1.engineer" 
                   className="w-full h-full object-cover object-center bg-gray-900"
                 />
