@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, ArrowRight, Sparkles, Code, Smartphone, Globe, Award, Target, Stars, Zap, BrainCircuit } from "lucide-react";
 import { fadeIn, slideIn } from "@/lib/framer-animations";
 import React, { useRef, useState, useEffect } from "react";
+import AnimatedBoyModel from "./AnimatedBoyModel";
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -293,12 +294,8 @@ export default function HeroSection() {
               }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             >
-              <div className="overflow-hidden rounded-full border-4 border-black/50 max-w-[300px] max-h-[300px] md:max-w-[400px] md:max-h-[400px]">
-                <img 
-                  src="/images/Copy_of_passpic_satwik-removebg-preview.png" 
-                  alt="Satwik - no1.engineer" 
-                  className="w-full h-full object-cover object-center bg-gray-900"
-                />
+              <div className="overflow-hidden rounded-full border-4 border-black/50 max-w-[300px] max-h-[300px] md:max-w-[400px] md:max-h-[400px] bg-gray-900">
+                <AnimatedBoyModel />
               </div>
               
               {/* Floating badges */}
