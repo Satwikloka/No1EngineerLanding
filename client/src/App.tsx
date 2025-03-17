@@ -5,6 +5,7 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import WelcomeOpener from "@/components/WelcomeOpener";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import MascotReactions from "@/components/MascotReactions";
 import { useState, useEffect } from "react";
 
 function Router() {
@@ -18,6 +19,7 @@ function Router() {
 
 function App() {
   const [showOpener, setShowOpener] = useState(true);
+  const [showMascot, setShowMascot] = useState(false);
   
   // Check if we've shown the opener before in this session
   useEffect(() => {
@@ -26,6 +28,17 @@ function App() {
       setShowOpener(false);
     }
   }, []);
+  
+  // Show mascot after a delay to not overwhelm users immediately
+  useEffect(() => {
+    if (!showOpener) {
+      const mascotTimer = setTimeout(() => {
+        setShowMascot(true);
+      }, 3000);
+      
+      return () => clearTimeout(mascotTimer);
+    }
+  }, [showOpener]);
   
   const handleOpenerComplete = () => {
     setShowOpener(false);
@@ -37,6 +50,7 @@ function App() {
       {showOpener && <WelcomeOpener onComplete={handleOpenerComplete} />}
       <Router />
       <WhatsAppButton />
+      {showMascot && <MascotReactions position="bottom-right" />}
     </QueryClientProvider>
   );
 }

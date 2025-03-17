@@ -323,7 +323,7 @@ export default function ServicesSection() {
                 {processSteps.map((step, index) => (
                   <motion.div
                     key={index}
-                    className="relative"
+                    className="relative process-step"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}

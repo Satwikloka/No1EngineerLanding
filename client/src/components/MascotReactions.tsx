@@ -138,7 +138,7 @@ export default function MascotReactions({ position = 'bottom-right' }: MascotRea
       
       // React based on the visible section
       if (currentSection && !showBubble && currentSection.id) {
-        const sectionId = currentSection.id;
+        const sectionId = currentSection.id as string;
         
         switch (sectionId) {
           case 'services':
