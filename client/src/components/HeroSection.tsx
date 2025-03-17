@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, ArrowRight, Globe, Code, Cpu, Share2, Layers } from "lucide-react";
 import { fadeIn, slideUp } from "@/lib/framer-animations";
 import React, { useEffect, useState, useRef } from "react";
+import VectorPortrait from './VectorPortrait';
 
 // Digital Nomad Journey Animation - 4K Business Journey
 const DigitalNomadJourneyAnimation = () => {
@@ -934,24 +935,24 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            {/* Professional image with McLaren-style branding */}
+            {/* Vectorized Portrait with McLaren-style branding */}
             <motion.div 
-              className="relative w-[450px] h-[450px] rounded-3xl shadow-2xl overflow-hidden"
+              className="relative w-[450px] h-[450px] rounded-3xl shadow-xl overflow-hidden"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.4 }}
             >
-              {/* Stylized background gradient */}
+              {/* McLaren-style background with racing elements */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A] to-[#334155]"></div>
               
-              {/* Abstract pattern */}
+              {/* Racing patterns */}
               <div className="absolute inset-0">
                 <svg width="100%" height="100%" viewBox="0 0 600 600" fill="none">
-                  <g opacity="0.2">
+                  <g opacity="0.15">
                     <path d="M0,0 L600,0 L600,600 L0,600 Z" fill="url(#grid-pattern)" />
                     <path d="M300,150 C350,150 400,250 400,300 S350,450 300,450 S200,350 200,300 S250,150 300,150 Z" 
-                          fill="none" stroke="#FF8000" strokeWidth="2" strokeDasharray="4,4" />
+                          fill="none" stroke="#FF8000" strokeWidth="3" strokeDasharray="4,4" />
                     <path d="M200,100 C400,150 450,350 350,450 S100,400 100,250 S200,100 200,100 Z" 
-                          fill="none" stroke="#0090D4" strokeWidth="2" strokeDasharray="4,4" opacity="0.5" />
+                          fill="none" stroke="#0090D4" strokeWidth="3" strokeDasharray="4,4" opacity="0.5" />
                   </g>
                   <defs>
                     <pattern id="grid-pattern" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(45)">
@@ -962,53 +963,20 @@ export default function HeroSection() {
               </div>
               
               {/* Orange racing stripe - McLaren papaya */}
-              <div className="absolute h-full w-16 left-16 top-0 bg-[#FF8000] opacity-60"></div>
+              <div className="absolute h-full w-16 left-10 top-0 bg-[#FF8000] opacity-60"></div>
               
-              {/* Business journey representation */}
-              <div className="absolute left-1/2 bottom-20 -translate-x-1/2">
-                {/* Business person silhouette */}
-                <div className="relative flex flex-col items-center">
-                  {/* Circular glow */}
-                  <div className="absolute bottom-10 w-40 h-40 rounded-full bg-[#FF8000] opacity-20 filter blur-xl"></div>
-                  
-                  {/* Business icon */}
-                  <motion.div 
-                    className="relative z-10 text-white mb-8"
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity }}
-                  >
-                    <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
-                    </svg>
-                  </motion.div>
-                  
-                  {/* Stylized text */}
-                  <div className="text-white text-center">
-                    <motion.div 
-                      className="text-xl font-bold mb-2"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.5 }}
-                    >
-                      The No.1 Engineer
-                    </motion.div>
-                    <motion.div 
-                      className="text-sm text-gray-300"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.7 }}
-                    >
-                      Expert Digital Solutions
-                    </motion.div>
-                  </div>
+              {/* Vectorized Portrait - SVG Component */}
+              <div className="absolute inset-0 flex items-center justify-center z-10">
+                <div className="w-[350px] h-[350px]">
+                  <VectorPortrait />
                 </div>
               </div>
               
               {/* Branding accent - McLaren blue */}
               <div className="absolute left-0 bottom-0 h-12 w-full bg-[#0090D4] opacity-40"></div>
               
-              {/* Tech icons */}
-              <div className="absolute top-20 right-24">
+              {/* McLaren accent colors */}
+              <div className="absolute top-10 right-10">
                 <motion.div 
                   className="flex gap-5"
                   animate={{ y: [0, 5, 0] }}
@@ -1032,6 +1000,17 @@ export default function HeroSection() {
                       }}
                     />
                   ))}
+                </motion.div>
+              </div>
+              
+              {/* Name banner */}
+              <div className="absolute bottom-14 left-0 right-0 mx-auto w-max bg-gradient-to-r from-[#FF8000] to-[#0090D4] text-white px-6 py-2 rounded-full shadow-lg">
+                <motion.div
+                  className="text-lg font-bold"
+                  animate={{ opacity: [0.9, 1, 0.9] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  Satwik Loka
                 </motion.div>
               </div>
             </motion.div>
