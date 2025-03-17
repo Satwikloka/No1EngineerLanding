@@ -50,24 +50,30 @@ export default function HeroSection() {
     animationDuration: Math.random() * 5 + 3,
   }));
   
-  // Feature icons with modern animation
+  // Feature icons with modern animation and Telugu translations for SEO
   const features = [
     { 
       icon: <Code className="w-5 h-5" />, 
       title: "Custom App Development", 
       description: "Build tailored solutions that perfectly align with your business needs",
+      teluguTitle: "కస్టమ్ యాప్ డెవలప్‌మెంట్",
+      teluguDescription: "మీ వ్యాపార అవసరాలకు సరిగ్గా సరిపోయే అనుకూల పరిష్కారాలను నిర్మించండి",
       color: "#00A19C"
     },
     { 
       icon: <Smartphone className="w-5 h-5" />, 
       title: "Mobile & Web Design", 
       description: "Create seamless experiences across all devices and platforms",
+      teluguTitle: "మొబైల్ & వెబ్ డిజైన్",
+      teluguDescription: "అన్ని పరికరాలు మరియు ప్లాట్‌ఫారమ్‌లలో సజావుగా అనుభవాలను సృష్టించండి",
       color: "#7038FF" 
     },
     { 
       icon: <Globe className="w-5 h-5" />, 
       title: "Marketing & Analytics", 
       description: "Reach your target audience and measure performance",
+      teluguTitle: "మార్కెటింగ్ & అనలిటిక్స్",
+      teluguDescription: "మీ లక్ష్య ప్రేక్షకులను చేరుకోండి మరియు పనితీరును కొలవండి",
       color: "#FE7F2D" 
     }
   ];
@@ -143,8 +149,8 @@ export default function HeroSection() {
                   animate={{
                     scale: [
                       1,
-                      Math.abs((mousePosition.x / containerRef.current?.offsetWidth || 1) - (col / numCols)) < 0.2 &&
-                      Math.abs((mousePosition.y / containerRef.current?.offsetHeight || 1) - (row / numRows)) < 0.2
+                      Math.abs((mousePosition.x / (containerRef.current ? containerRef.current.offsetWidth : 1)) - (col / numCols)) < 0.2 &&
+                      Math.abs((mousePosition.y / (containerRef.current ? containerRef.current.offsetHeight : 1)) - (row / numRows)) < 0.2
                         ? 1.5
                         : 1,
                     ],
@@ -256,8 +262,14 @@ export default function HeroSection() {
                   {feature.icon}
                 </div>
                 
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
+                <h3 className="text-xl font-semibold mb-2">
+                  <span lang="en">{feature.title}</span>
+                  <span lang="te" className="sr-only">{feature.teluguTitle}</span>
+                </h3>
+                <p className="text-gray-400">
+                  <span lang="en">{feature.description}</span>
+                  <span lang="te" className="sr-only">{feature.teluguDescription}</span>
+                </p>
               </div>
               
               {/* Hover animation */}

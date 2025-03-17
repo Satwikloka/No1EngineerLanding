@@ -12,7 +12,7 @@ export default function Footer() {
               <span className="text-blue-500">no1</span>.engineer
             </h3>
             <p className="text-gray-300 mb-6">
-              Transforming ideas into innovative solutions. Precision engineering for the modern era.
+              <span className="font-medium">Transforming ideas into innovative solutions. Telugu-English bilingual engineering services.</span>
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-blue-500 transition-colors">
@@ -41,36 +41,59 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-6">Services</h4>
+            <h4 className="text-lg font-semibold mb-6">
+              <span lang="en">Services</span> <span lang="te" className="text-sm text-gray-400">(సేవలు)</span>
+            </h4>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-300 hover:text-blue-500 transition-colors">Custom Software</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-blue-500 transition-colors">Mobile Apps</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-blue-500 transition-colors">Cloud Solutions</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-blue-500 transition-colors">AI & Machine Learning</a></li>
+              <li>
+                <a href="#" className="text-gray-300 hover:text-blue-500 transition-colors">
+                  <span lang="en">Custom Software</span> <span lang="te" className="text-xs text-gray-400">(కస్టమ్ సాఫ్ట్‌వేర్)</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-300 hover:text-blue-500 transition-colors">
+                  <span lang="en">Mobile Apps</span> <span lang="te" className="text-xs text-gray-400">(మొబైల్ అప్లికేషన్‌లు)</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-300 hover:text-blue-500 transition-colors">
+                  <span lang="en">Cloud Solutions</span> <span lang="te" className="text-xs text-gray-400">(క్లౌడ్ సొల్యూషన్స్)</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-300 hover:text-blue-500 transition-colors">
+                  <span lang="en">AI & Machine Learning</span> <span lang="te" className="text-xs text-gray-400">(AI & మెషిన్ లెర్నింగ్)</span>
+                </a>
+              </li>
             </ul>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-6">Contact Us</h4>
+            <h4 className="text-lg font-semibold mb-6">
+              <span lang="en">Contact Us</span> <span lang="te" className="text-sm text-gray-400">(సంప్రదించండి)</span>
+            </h4>
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin className="text-blue-500 mr-3 mt-1 h-5 w-5" />
-                <span className="text-gray-300">123 Innovation Drive, Tech City, TC 10101</span>
+                <span className="text-gray-300">Hyderabad, Telangana, India</span>
               </li>
               <li className="flex items-start">
                 <Mail className="text-blue-500 mr-3 mt-1 h-5 w-5" />
-                <span className="text-gray-300">info@no1.engineer</span>
+                <span className="text-gray-300">satwikloka321@gmail.com</span>
               </li>
               <li className="flex items-start">
                 <Phone className="text-blue-500 mr-3 mt-1 h-5 w-5" />
-                <span className="text-gray-300">+1 (555) 123-4567</span>
+                <span className="text-gray-300">+91 72880 70697</span>
               </li>
             </ul>
           </div>
         </div>
         
         <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
-          <p>&copy; {currentYear} no1.engineer. All rights reserved.</p>
+          <p>
+            <span>&copy; {currentYear} no1.engineer. All rights reserved.</span>
+            <span lang="te" className="block mt-1 text-xs">తెలుగు మరియు ఆంగ్లంలో ఇంజనీరింగ్ సేవలు అందిస్తున్నాము.</span>
+          </p>
           <div className="flex justify-center space-x-6 mt-4">
             <a href="#" className="hover:text-blue-500 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-blue-500 transition-colors">Terms of Service</a>

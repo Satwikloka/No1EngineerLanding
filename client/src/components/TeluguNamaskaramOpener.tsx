@@ -55,6 +55,7 @@ export default function TeluguNamaskaramOpener({ onComplete }: TeluguNamaskaramO
               {/* Bold gradient Telugu text */}
               <div className="space-y-2">
                 <motion.h1 
+                  lang="te"
                   className="font-telugu text-gradient-telugu text-6xl md:text-8xl"
                   style={{
                     backgroundSize: "200% 200%",
@@ -66,6 +67,7 @@ export default function TeluguNamaskaramOpener({ onComplete }: TeluguNamaskaramO
                   నమస్కారం
                 </motion.h1>
                 <motion.p 
+                  lang="en"
                   className="text-white text-xl md:text-2xl"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -174,6 +176,7 @@ export default function TeluguNamaskaramOpener({ onComplete }: TeluguNamaskaramO
                 {/* Glowing Telugu text */}
                 <div className="flex flex-col items-center">
                   <motion.h1 
+                    lang="te"
                     className="font-telugu text-gradient-telugu text-7xl md:text-9xl mb-2 relative"
                     style={{ 
                       textShadow: "0 0 15px rgba(0,161,156,0.5), 0 0 30px rgba(124,58,237,0.3)"
@@ -192,6 +195,7 @@ export default function TeluguNamaskaramOpener({ onComplete }: TeluguNamaskaramO
                   </motion.h1>
                   
                   <motion.p 
+                    lang="en"
                     className="text-white text-2xl md:text-3xl"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -223,9 +227,9 @@ export default function TeluguNamaskaramOpener({ onComplete }: TeluguNamaskaramO
               transition={{ duration: 1.5 }}
             >
               <div className="space-y-2">
-                <h1 className="font-telugu text-gradient-telugu text-7xl md:text-9xl">నమస్కారం</h1>
-                <p className="text-white text-2xl md:text-3xl">Namaskaram</p>
-                <p className="text-white text-xl md:text-2xl font-cursive mt-4">Welcome to the world of engineering excellence</p>
+                <h1 lang="te" className="font-telugu text-gradient-telugu text-7xl md:text-9xl">నమస్కారం</h1>
+                <p lang="en" className="text-white text-2xl md:text-3xl">Namaskaram</p>
+                <p lang="en" className="text-white text-xl md:text-2xl font-cursive mt-4">Welcome to the world of engineering excellence</p>
               </div>
             </motion.div>
           )}
