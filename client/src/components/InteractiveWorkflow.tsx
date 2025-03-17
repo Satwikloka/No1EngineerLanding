@@ -313,6 +313,7 @@ function DesignNode({ data }: { data: NodeData }) {
 
 function DevelopNode({ data }: { data: NodeData }) {
   const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
   
   return (
     <>
@@ -320,12 +321,34 @@ function DevelopNode({ data }: { data: NodeData }) {
         <Handle type="source" position={Position.Right} id="a" style={{ background: '#00A19C', width: 8, height: 8 }} />
         <Handle type="target" position={Position.Left} id="b" style={{ background: '#333333', width: 8, height: 8 }} />
         
+        {/* Clickable indicator */}
+        <NodeClickIndicator />
+        
+        {/* Tooltip that appears on hover */}
+        <AnimatePresence>
+          {hovered && (
+            <motion.div
+              className="absolute -top-10 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none"
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 5 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="bg-[#333] text-white text-xs py-1 px-3 rounded whitespace-nowrap">
+                Click to explore {data.label} services
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        
         <motion.div 
           initial={{ scale: 0.9 }}
           animate={{ scale: 1 }}
           whileHover={{ scale: 1.05, boxShadow: '0 0 15px rgba(0,161,156,0.5)' }}
           className="bg-[#111] rounded-lg border border-[#333] p-4 w-48 cursor-pointer"
           onClick={() => setOpen(true)}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
         >
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
@@ -365,6 +388,7 @@ function DevelopNode({ data }: { data: NodeData }) {
 
 function TestNode({ data }: { data: NodeData }) {
   const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
   
   return (
     <>
@@ -372,12 +396,34 @@ function TestNode({ data }: { data: NodeData }) {
         <Handle type="source" position={Position.Right} id="a" style={{ background: '#00A19C', width: 8, height: 8 }} />
         <Handle type="target" position={Position.Left} id="b" style={{ background: '#333333', width: 8, height: 8 }} />
         
+        {/* Clickable indicator */}
+        <NodeClickIndicator />
+        
+        {/* Tooltip that appears on hover */}
+        <AnimatePresence>
+          {hovered && (
+            <motion.div
+              className="absolute -top-10 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none"
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 5 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="bg-[#333] text-white text-xs py-1 px-3 rounded whitespace-nowrap">
+                Click to explore {data.label} services
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        
         <motion.div 
           initial={{ scale: 0.9 }}
           animate={{ scale: 1 }}
           whileHover={{ scale: 1.05, boxShadow: '0 0 15px rgba(0,161,156,0.5)' }}
           className="bg-[#111] rounded-lg border border-[#333] p-4 w-48 cursor-pointer"
           onClick={() => setOpen(true)}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
         >
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
@@ -421,6 +467,7 @@ function TestNode({ data }: { data: NodeData }) {
 
 function DeployNode({ data }: { data: NodeData }) {
   const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
   
   return (
     <>
@@ -428,12 +475,34 @@ function DeployNode({ data }: { data: NodeData }) {
         <Handle type="source" position={Position.Right} id="a" style={{ background: '#00A19C', width: 8, height: 8 }} />
         <Handle type="target" position={Position.Left} id="b" style={{ background: '#333333', width: 8, height: 8 }} />
         
+        {/* Clickable indicator */}
+        <NodeClickIndicator />
+        
+        {/* Tooltip that appears on hover */}
+        <AnimatePresence>
+          {hovered && (
+            <motion.div
+              className="absolute -top-10 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none"
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 5 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="bg-[#333] text-white text-xs py-1 px-3 rounded whitespace-nowrap">
+                Click to explore {data.label} services
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        
         <motion.div 
           initial={{ scale: 0.9 }}
           animate={{ scale: 1 }}
           whileHover={{ scale: 1.05, boxShadow: '0 0 15px rgba(0,161,156,0.5)' }}
           className="bg-[#111] rounded-lg border border-[#333] p-4 w-48 cursor-pointer"
           onClick={() => setOpen(true)}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
         >
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
