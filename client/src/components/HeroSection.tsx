@@ -47,7 +47,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8 }}
           >
             <div className="relative">
-              {/* Mercedes F1 inspired accent line */}
+              {/* no1.engineer accent line */}
               <div className="absolute left-0 top-0 w-1 h-20 bg-[#00A19C]"></div>
               
               <div className="pl-6">
@@ -56,7 +56,7 @@ export default function HeroSection() {
                 </h1>
                 
                 <p className="text-lg md:text-xl text-slate-600 max-w-xl mb-8">
-                  We don't just build from specifications — we visit your location to understand your business environment, workflows, and challenges firsthand. This ensures Mercedes-AMG level precision in every solution.
+                  We don't just build from specifications — we visit your location to understand your business environment, workflows, and challenges firsthand. This ensures no1.engineer level precision in every solution.
                 </p>
                 
                 <div className="space-y-4 mb-8">
@@ -193,7 +193,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.5 }}
               >
-                <p className="text-sm">Transforming ideas into Mercedes-quality solutions</p>
+                <p className="text-sm">Transforming ideas into no1.engineer quality solutions</p>
                 <div className="absolute -bottom-2 right-5 w-4 h-4 bg-[#00A19C] transform rotate-45" />
               </motion.div>
             </div>
