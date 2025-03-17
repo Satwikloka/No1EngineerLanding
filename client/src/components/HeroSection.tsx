@@ -79,32 +79,59 @@ export default function HeroSection() {
               {/* G.O.A.T with teal spectacles */}
               <div className="h-[300px] md:h-[400px] relative">
                 <TealSpectaclesGoat />
-                
-                {/* Profile overlay */}
-                <motion.div 
-                  className="absolute bottom-20 right-0 w-28 h-28 md:w-36 md:h-36 rounded-full border-4 border-white shadow-lg overflow-hidden z-10"
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 1 }}
-                >
-                  <img 
-                    src="/attached_assets/Copy_of_passpic_satwik-removebg-preview.png" 
-                    alt="Satwik Loka" 
-                    className="w-full h-full object-cover object-center"
-                  />
-                </motion.div>
               </div>
               
-              <motion.div 
-                className="text-center mt-4"
-                initial={{ opacity: 0, y: 10 }}
+              {/* Profile Card - Mercedes F1 styled */}
+              <motion.div
+                className="absolute bottom-0 right-0 w-48 md:w-56 rounded-lg bg-white shadow-xl overflow-hidden z-20 border-t-4 border-[#00A19C]"
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.5, duration: 0.5 }}
+                transition={{ duration: 0.6, delay: 1 }}
               >
-                <h2 className="text-xl font-bold mb-1 text-[#333333]">Satwik Loka</h2>
-                <div className="flex items-center gap-1 justify-center text-sm text-slate-600">
-                  <Globe className="w-4 h-4 text-[#00A19C]" />
-                  <span>Full-Stack Engineer</span>
+                <div className="relative">
+                  {/* Background pattern - Mercedes-inspired */}
+                  <div className="absolute inset-0 opacity-10 z-0">
+                    <div className="h-full w-full bg-gradient-to-br from-[#00A19C] to-[#333333]"></div>
+                    <div className="absolute top-0 left-0 w-full h-1 bg-[#00A19C]"></div>
+                  </div>
+                  
+                  <div className="flex items-center p-3 relative z-10">
+                    {/* Profile Image */}
+                    <motion.div 
+                      className="w-16 h-16 rounded-full border-2 border-white shadow-md overflow-hidden flex-shrink-0"
+                      initial={{ scale: 0.8 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.5, delay: 1.2 }}
+                    >
+                      <img 
+                        src="/attached_assets/Copy_of_passpic_satwik-removebg-preview.png" 
+                        alt="Satwik Loka" 
+                        className="w-full h-full object-cover object-center"
+                      />
+                    </motion.div>
+                    
+                    {/* Profile Info */}
+                    <div className="ml-3">
+                      <h2 className="text-lg font-bold text-[#333333]">Satwik Loka</h2>
+                      <div className="flex items-center gap-1 text-sm text-slate-600">
+                        <Globe className="w-3 h-3 text-[#00A19C]" />
+                        <span>Full-Stack Engineer</span>
+                      </div>
+                      
+                      {/* Mercedes-inspired rating stars */}
+                      <div className="flex space-x-1 mt-1">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <motion.div 
+                            key={star}
+                            className="w-2 h-2 bg-[#00A19C] rounded-full"
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ duration: 0.2, delay: 1.4 + (star * 0.1) }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
               
