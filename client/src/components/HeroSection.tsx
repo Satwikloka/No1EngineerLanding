@@ -1,212 +1,289 @@
-import { motion } from "framer-motion";
-import { ChevronDown, ArrowRight, Car, Briefcase, MapPin, ClipboardCheck } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ChevronDown, ArrowRight, Car, Briefcase, MapPin, ClipboardCheck, Sparkles, Code, Smartphone, Globe } from "lucide-react";
 import { fadeIn, slideUp } from "@/lib/framer-animations";
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 export default function HeroSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [cursorVariant, setCursorVariant] = useState("default");
+  
+  // Parallax scrolling effect
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 1000], [0, 300]);
+  const y2 = useTransform(scrollY, [0, 2000], [0, -100]);
+  const y3 = useTransform(scrollY, [0, 1000], [0, 500]);
+  
+  // Grid cells configuration for the animated background
+  const numCols = 40;
+  const numRows = 20;
+  
+  // Mouse tracking effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top,
+        });
+      }
+    };
+    
+    if (containerRef.current) {
+      containerRef.current.addEventListener("mousemove", handleMouseMove);
+    }
+    
+    return () => {
+      if (containerRef.current) {
+        containerRef.current.removeEventListener("mousemove", handleMouseMove);
+      }
+    };
+  }, []);
+  
+  // Random stars array for the space effect
+  const stars = Array.from({ length: 100 }, (_, i) => ({
+    id: i,
+    size: Math.random() * 2 + 1,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    animationDuration: Math.random() * 5 + 3,
+  }));
+  
+  // Feature icons with modern animation
+  const features = [
+    { 
+      icon: <Code className="w-5 h-5" />, 
+      title: "Custom App Development", 
+      description: "Build tailored solutions that perfectly align with your business needs",
+      color: "#00A19C"
+    },
+    { 
+      icon: <Smartphone className="w-5 h-5" />, 
+      title: "Mobile & Web Design", 
+      description: "Create seamless experiences across all devices and platforms",
+      color: "#7038FF" 
+    },
+    { 
+      icon: <Globe className="w-5 h-5" />, 
+      title: "Marketing & Analytics", 
+      description: "Reach your target audience and measure performance",
+      color: "#FE7F2D" 
+    }
+  ];
+  
   return (
-    <section className="relative min-h-screen pt-24 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 -z-10 opacity-20 overflow-hidden">
-        <motion.div 
-          className="absolute top-20 right-10 w-72 h-72 rounded-full bg-gradient-to-tr from-orange-300 to-red-300 mix-blend-multiply"
-          animate={{ 
-            scale: [1, 1.1, 1],
-            rotate: [0, 5, 0],
-            opacity: [0.2, 0.3, 0.2]
+    <section 
+      className="relative min-h-screen overflow-hidden bg-black text-white"
+      ref={containerRef}
+    >
+      {/* Aceternity-inspired animated background */}
+      <div className="absolute inset-0 opacity-60">
+        {/* Space effect with stars */}
+        <div className="absolute inset-0 overflow-hidden">
+          {stars.map((star) => (
+            <motion.div
+              key={star.id}
+              className="absolute rounded-full bg-white"
+              style={{
+                width: star.size,
+                height: star.size,
+                left: `${star.x}%`,
+                top: `${star.y}%`,
+              }}
+              animate={{
+                opacity: [0.2, 0.8, 0.2],
+                scale: [1, 1.2, 1]
+              }}
+              transition={{
+                duration: star.animationDuration,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* Grid pattern that reacts to mouse movement */}
+        <div className="absolute inset-0 grid"
+          style={{
+            gridTemplateColumns: `repeat(${numCols}, 1fr)`,
+            gridTemplateRows: `repeat(${numRows}, 1fr)`,
           }}
-          transition={{ duration: 15, repeat: Infinity }}
-        />
-        <motion.div 
-          className="absolute -top-10 -left-20 w-96 h-96 rounded-full bg-gradient-to-br from-teal-200 to-purple-200 mix-blend-multiply"
-          animate={{ 
-            scale: [1, 1.2, 1],
-            rotate: [0, -5, 0],
-            opacity: [0.2, 0.4, 0.2]
-          }}
-          transition={{ duration: 20, repeat: Infinity }}
-        />
-        <motion.div 
-          className="absolute bottom-0 right-1/4 w-64 h-64 rounded-full bg-gradient-to-tr from-blue-200 to-purple-200 mix-blend-multiply"
-          animate={{ 
-            scale: [1, 1.2, 1],
-            rotate: [0, 10, 0],
-            opacity: [0.2, 0.3, 0.2]
-          }}
-          transition={{ duration: 18, repeat: Infinity }}
-        />
+        >
+          {Array.from({ length: numCols * numRows }).map((_, i) => {
+            const row = Math.floor(i / numCols);
+            const col = i % numCols;
+            
+            return (
+              <motion.div
+                key={i}
+                className="relative"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ 
+                  opacity: [
+                    0.1,
+                    Math.abs(Math.sin((row + col) * 0.1)) * 0.3,
+                    0.1
+                  ]
+                }}
+                transition={{
+                  duration: 3 + Math.sin(row * col) * 2,
+                  repeat: Infinity,
+                  delay: (row + col) * 0.02,
+                }}
+              >
+                <motion.div
+                  className="absolute inset-1 rounded-md bg-[#00A19C]"
+                  style={{ opacity: 0.1 }}
+                  animate={{
+                    scale: [
+                      1,
+                      Math.abs((mousePosition.x / containerRef.current?.offsetWidth || 1) - (col / numCols)) < 0.2 &&
+                      Math.abs((mousePosition.y / containerRef.current?.offsetHeight || 1) - (row / numRows)) < 0.2
+                        ? 1.5
+                        : 1,
+                    ],
+                  }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
       
-      <div className="section-container">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
-          {/* Left side: Content & Call to Action */}
-          <motion.div 
-            className="lg:w-1/2"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+      {/* Main content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-32 pb-24">
+        <div className="flex flex-col items-center text-center mb-16">
+          {/* Animated gradient text */}
+          <motion.div
+            className="inline-block"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="relative">
-              {/* no1.engineer accent line */}
-              <div className="absolute left-0 top-0 w-1 h-20 bg-[#00A19C]"></div>
-              
-              <div className="pl-6">
-                <h1 className="title-xl mb-6">
-                  On-site Requirements Gathering
-                </h1>
-                
-                <p className="text-lg md:text-xl text-slate-600 max-w-xl mb-8">
-                  We don't just build from specifications — we visit your location to understand your business environment, workflows, and challenges firsthand. This ensures no1.engineer level precision in every solution.
-                </p>
-                
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#00A19C] flex items-center justify-center flex-shrink-0 mt-1">
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
-                    </div>
-                    <p className="text-slate-600">Face-to-face meetings with stakeholders</p>
-                  </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#00A19C] flex items-center justify-center flex-shrink-0 mt-1">
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
-                    </div>
-                    <p className="text-slate-600">Workflow observation and documentation</p>
-                  </div>
-                  
-                  <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#00A19C] flex items-center justify-center flex-shrink-0 mt-1">
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
-                    </div>
-                    <p className="text-slate-600">User interviews and pain point identification</p>
-                  </div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#00A19C] via-[#7C3AED] to-[#FE7F2D] relative">
+              <span className="leading-tight">no1.engineer</span>
+              <motion.span
+                className="absolute -top-8 -right-8 text-white text-base bg-[#00A19C] px-2 py-1 rounded-lg"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2, duration: 0.5 }}
+              >
+                <div className="flex items-center gap-1">
+                  <Sparkles className="w-3 h-3" />
+                  <span>Premium Quality</span>
                 </div>
-                
-                <div className="flex flex-wrap gap-4">
-                  <a href="#contact" className="btn-primary">
-                    <span className="relative z-10">Schedule a Visit</span>
-                  </a>
-                  <a href="#workflow" className="btn-outline">
-                    <span className="flex items-center gap-2">
-                      Explore My Process <ArrowRight className="w-4 h-4" />
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
+              </motion.span>
+            </h1>
           </motion.div>
           
-          {/* Right side: Road to Requirements Animation */}
-          <motion.div 
-            className="lg:w-1/2"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+          <motion.div
+            className="max-w-3xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
           >
-            <div className="relative h-[350px] md:h-[450px]">
-              {/* Road path */}
-              <div className="absolute inset-x-10 top-1/4 bottom-10 bg-gray-200 rounded-lg overflow-hidden">
-                {/* Road markings */}
-                <div className="absolute inset-0 flex flex-col justify-between">
-                  {/* Center line */}
-                  <motion.div 
-                    className="absolute left-0 right-0 top-1/2 h-2"
-                    style={{ marginTop: -2 }}
-                  >
-                    {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
-                      <motion.div 
-                        key={i}
-                        className="absolute h-full w-10 bg-white"
-                        style={{ left: `${i * 10}%` }}
-                        animate={{ x: [0, -1000] }}
-                        transition={{ 
-                          duration: 10,
-                          repeat: Infinity,
-                          ease: "linear",
-                          delay: i * 0.1
-                        }}
-                      />
-                    ))}
-                  </motion.div>
-                </div>
-                
-                {/* Car representation moving on the road */}
-                <motion.div
-                  className="absolute top-1/2 -mt-8 left-10"
-                  animate={{ 
-                    x: [0, 50, 100, 150, 100, 150, 200],
-                    y: [0, -5, 0, -10, 0, -5, 0]
-                  }}
-                  transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
-                >
-                  <div className="bg-[#00A19C] p-2 rounded-lg shadow-lg transform rotate-90">
-                    <Car className="w-6 h-6 text-white" />
-                  </div>
-                </motion.div>
-                
-                {/* Map pins/destinations along the road */}
-                <motion.div
-                  className="absolute top-1/4 right-1/4"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <div className="bg-white p-2 rounded-full shadow-lg">
-                    <Briefcase className="w-4 h-4 text-[#333333]" />
-                  </div>
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-8 bg-[#333333]" />
-                </motion.div>
-                
-                <motion.div
-                  className="absolute top-1/5 right-1/2"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <div className="bg-white p-2 rounded-full shadow-lg">
-                    <MapPin className="w-4 h-4 text-[#00A19C]" />
-                  </div>
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-10 bg-[#00A19C]" />
-                </motion.div>
-                
-                <motion.div
-                  className="absolute top-1/3 right-1/6"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <div className="bg-white p-2 rounded-full shadow-lg">
-                    <ClipboardCheck className="w-4 h-4 text-[#333333]" />
-                  </div>
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-12 bg-[#333333]" />
-                </motion.div>
-              </div>
-              
-              {/* Message bubbles */}
-              <motion.div
-                className="absolute top-1/4 left-1/4 bg-white rounded-lg p-3 shadow-lg max-w-[180px]"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
+            <p className="text-xl md:text-2xl text-gray-300 mb-8">
+              <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#00A19C] to-[#7C3AED]">
+                Telugu-English
+              </span>{" "}
+              bilingual digital engineering solutions that transform your business
+            </p>
+            
+            <div className="flex flex-wrap justify-center gap-4">
+              <motion.a 
+                href="#contact" 
+                className="bg-gradient-to-r from-[#00A19C] to-[#7C3AED] text-white px-8 py-3 rounded-lg font-medium relative overflow-hidden group"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <p className="text-sm">Gathering requirements at client location</p>
-                <div className="absolute -bottom-2 left-5 w-4 h-4 bg-white transform rotate-45" />
-              </motion.div>
+                <span className="relative z-10">Schedule a Consultation</span>
+                <motion.div 
+                  className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "100%" }}
+                  transition={{ duration: 0.5 }}
+                />
+              </motion.a>
               
-              <motion.div
-                className="absolute bottom-1/4 right-1/4 bg-[#00A19C] text-white rounded-lg p-3 shadow-lg max-w-[180px]"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.5 }}
+              <motion.a 
+                href="#portfolio" 
+                className="bg-transparent text-white border border-[#00A19C] px-8 py-3 rounded-lg font-medium hover:bg-[#00A19C]/10 transition-colors duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <p className="text-sm">Transforming ideas into no1.engineer quality solutions</p>
-                <div className="absolute -bottom-2 right-5 w-4 h-4 bg-[#00A19C] transform rotate-45" />
-              </motion.div>
+                <span className="flex items-center gap-2">
+                  View Portfolio <ArrowRight className="w-4 h-4" />
+                </span>
+              </motion.a>
             </div>
           </motion.div>
         </div>
         
+        {/* Feature cards with modern animation */}
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+        >
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              className="relative bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden p-6 border border-gray-800"
+              whileHover={{ y: -10, boxShadow: `0 10px 30px -5px ${feature.color}20` }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 + index * 0.2, duration: 0.5 }}
+            >
+              {/* Glow effect */}
+              <div 
+                className="absolute inset-0 opacity-10 filter blur-xl"
+                style={{ background: `radial-gradient(circle at center, ${feature.color}80 0%, transparent 70%)` }}
+              />
+              
+              <div className="relative z-10">
+                <div 
+                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
+                  style={{ backgroundColor: `${feature.color}20`, color: feature.color }}
+                >
+                  {feature.icon}
+                </div>
+                
+                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <p className="text-gray-400">{feature.description}</p>
+              </div>
+              
+              {/* Hover animation */}
+              <motion.div
+                className="absolute bottom-0 left-0 h-1 bg-gradient-to-r"
+                style={{ 
+                  width: '33%',
+                  backgroundImage: `linear-gradient(to right, ${feature.color}, transparent)`
+                }}
+                whileHover={{ width: '100%' }}
+                transition={{ duration: 0.3 }}
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+        
         {/* Scroll indicator */}
         <motion.div 
-          className="flex justify-center mt-16"
+          className="flex justify-center mt-24"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <a href="#about" className="flex flex-col items-center text-slate-500 hover:text-slate-800 transition-colors">
+          <a 
+            href="#about" 
+            className="flex flex-col items-center text-gray-400 hover:text-white transition-colors"
+          >
             <span className="text-sm mb-2">Scroll to explore</span>
             <ChevronDown className="w-6 h-6" />
           </a>
