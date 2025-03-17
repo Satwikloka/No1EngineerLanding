@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -32,7 +31,7 @@
     @apply py-20 md:py-32 relative;
   }
 
-  /* McLaren-inspired colors */
+  /* Modern 3D flow colors */
   :root {
     --color-purple-cream: #A78BFA;
     --color-purple-light: #C4B5FD;
@@ -45,9 +44,6 @@
     --color-gold: #FCD34D;
     --color-slate: #0F172A;
     --color-slate-light: #334155;
-    --mclaren-papaya: #FF8000;
-    --mclaren-blue: #0090D4;
-    --mclaren-papaya-light: #FF9D45;
   }
   
   /* Glass effect */
@@ -82,46 +78,29 @@
   /* Typography */
   .title-xl {
     @apply text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight;
-    background: linear-gradient(to right, var(--mclaren-papaya), var(--mclaren-blue));
+    background: linear-gradient(to right, var(--color-deep-purple), var(--color-purple-cream));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
   .title-lg {
     @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
-    background: linear-gradient(to right, var(--mclaren-papaya), var(--mclaren-blue));
+    background: linear-gradient(to right, var(--color-deep-purple), var(--color-purple-cream));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
   .title-md {
     @apply text-3xl md:text-4xl font-bold tracking-tight;
-    background: linear-gradient(to right, var(--mclaren-papaya), var(--mclaren-papaya-light));
+    background: linear-gradient(to right, var(--color-deep-purple), var(--color-orange-deep));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
-  .text-gradient-papaya-blue {
-    background: linear-gradient(to right, var(--mclaren-papaya), var(--mclaren-blue));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  .text-gradient-papaya {
-    background: linear-gradient(to right, var(--mclaren-papaya), var(--mclaren-papaya-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  .radial-pulse-orange {
-    background: radial-gradient(circle, var(--mclaren-papaya) 0%, rgba(255,128,0,0) 70%);
-    animation: pulse 3s infinite;
-  }
-  
-  /* McLaren-inspired Buttons */
+  /* Modern Buttons */
   .btn-primary {
     @apply px-6 py-3 rounded-md transition-all duration-300 shadow-lg;
-    background: linear-gradient(135deg, var(--mclaren-papaya), var(--mclaren-papaya-light));
+    background: linear-gradient(135deg, var(--color-deep-purple), var(--color-purple-cream));
     color: white;
     position: relative;
     overflow: hidden;
@@ -131,7 +110,7 @@
   
   .btn-primary:hover {
     transform: translateY(-2px) translateZ(0);
-    box-shadow: 0 10px 25px -5px rgba(255, 128, 0, 0.5);
+    box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.5);
   }
   
   .btn-primary::before {
@@ -141,7 +120,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--mclaren-blue), var(--mclaren-papaya));
+    background: linear-gradient(135deg, var(--color-orange-cream), var(--color-orange-deep));
     transition: all 0.6s cubic-bezier(0.65, 0, 0.35, 1);
     z-index: -1;
   }
@@ -155,16 +134,16 @@
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    border-color: var(--mclaren-blue);
-    color: var(--mclaren-blue);
+    border-color: var(--color-purple-cream);
+    color: var(--color-deep-purple);
     transform: translateZ(0);
   }
   
   .btn-outline:hover {
-    background: linear-gradient(135deg, var(--mclaren-blue), rgba(0, 144, 212, 0.7));
+    background: linear-gradient(135deg, var(--color-purple-cream), var(--color-deep-purple));
     color: white;
     transform: translateY(-2px) translateZ(0);
-    box-shadow: 0 10px 25px -5px rgba(0, 144, 212, 0.4);
+    box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.4);
   }
   
   /* Modern Cards */
