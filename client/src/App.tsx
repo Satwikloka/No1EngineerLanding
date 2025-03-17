@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import WelcomeOpener from "@/components/WelcomeOpener";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { useState, useEffect } from "react";
 
 function Router() {
@@ -35,6 +36,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       {showOpener && <WelcomeOpener onComplete={handleOpenerComplete} />}
       <Router />
+      <WhatsAppButton />
     </QueryClientProvider>
   );
 }
