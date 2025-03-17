@@ -1,8 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, ArrowRight, Globe, Code, Cpu, Share2, Layers } from "lucide-react";
+import { ChevronDown, ArrowRight, Globe, Code, Share2 } from "lucide-react";
 import { fadeIn, slideUp } from "@/lib/framer-animations";
 import React, { useEffect, useState, useRef } from "react";
-import VectorPortrait from './VectorPortrait';
+import McLarenJourneyAnimation from './McLarenJourneyAnimation';
 
 // Digital Nomad Journey Animation - 4K Business Journey
 const DigitalNomadJourneyAnimation = () => {
@@ -799,7 +799,7 @@ const engineeringMilestones = [
     year: "1500 BCE",
     title: "Ancient Engineering",
     description: "Early hydraulic systems and architectural innovations",
-    icon: <Layers className="h-6 w-6 text-white" />
+    icon: <Globe className="h-6 w-6 text-white" />
   },
   {
     year: "1800s",
@@ -811,7 +811,7 @@ const engineeringMilestones = [
     year: "1950s",
     title: "Independent India",
     description: "Establishment of technical institutions and industrial growth",
-    icon: <Cpu className="h-6 w-6 text-white" />
+    icon: <Code className="h-6 w-6 text-white" />
   },
   {
     year: "2000s",
@@ -935,80 +935,94 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            {/* Vectorized Portrait with McLaren-style branding */}
+            {/* Premium McLaren-inspired brand showcase */}
             <motion.div 
-              className="relative w-[450px] h-[450px] rounded-3xl shadow-xl overflow-hidden"
+              className="relative w-[450px] h-[450px] rounded-none border-2 border-[#FF8000] shadow-xl overflow-hidden"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.4 }}
             >
-              {/* McLaren-style background with racing elements */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A] to-[#334155]"></div>
+              {/* McLaren-style background */}
+              <div className="absolute inset-0 bg-black"></div>
               
-              {/* Racing patterns */}
-              <div className="absolute inset-0">
-                <svg width="100%" height="100%" viewBox="0 0 600 600" fill="none">
-                  <g opacity="0.15">
-                    <path d="M0,0 L600,0 L600,600 L0,600 Z" fill="url(#grid-pattern)" />
-                    <path d="M300,150 C350,150 400,250 400,300 S350,450 300,450 S200,350 200,300 S250,150 300,150 Z" 
-                          fill="none" stroke="#FF8000" strokeWidth="3" strokeDasharray="4,4" />
-                    <path d="M200,100 C400,150 450,350 350,450 S100,400 100,250 S200,100 200,100 Z" 
-                          fill="none" stroke="#0090D4" strokeWidth="3" strokeDasharray="4,4" opacity="0.5" />
-                  </g>
-                  <defs>
-                    <pattern id="grid-pattern" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(45)">
-                      <rect width="2" height="2" fill="white" />
-                    </pattern>
-                  </defs>
-                </svg>
-              </div>
+              {/* McLaren Papaya Racing Stripe */}
+              <div className="absolute h-full w-12 left-0 top-0 bg-[#FF8000]"></div>
               
-              {/* Orange racing stripe - McLaren papaya */}
-              <div className="absolute h-full w-16 left-10 top-0 bg-[#FF8000] opacity-60"></div>
+              {/* McLaren Blue Bottom Accent */}
+              <div className="absolute left-0 bottom-0 h-12 w-full bg-[#0090D4]"></div>
               
-              {/* Vectorized Portrait - SVG Component */}
-              <div className="absolute inset-0 flex items-center justify-center z-10">
-                <div className="w-[350px] h-[350px]">
-                  <VectorPortrait />
-                </div>
-              </div>
-              
-              {/* Branding accent - McLaren blue */}
-              <div className="absolute left-0 bottom-0 h-12 w-full bg-[#0090D4] opacity-40"></div>
-              
-              {/* McLaren accent colors */}
-              <div className="absolute top-10 right-10">
+              {/* McLaren Logo-inspired element */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
                 <motion.div 
-                  className="flex gap-5"
-                  animate={{ y: [0, 5, 0] }}
-                  transition={{ duration: 6, repeat: Infinity }}
+                  className="relative w-64 h-64"
+                  animate={{ rotateY: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 >
-                  {["#FF8000", "#0090D4", "#FFFFFF"].map((color, i) => (
-                    <motion.div 
-                      key={i}
-                      className="w-6 h-6 rounded-full"
-                      style={{ backgroundColor: color, opacity: 0.8 }}
-                      whileHover={{ scale: 1.2, opacity: 1 }}
-                      animate={{ 
-                        scale: [1, 1.1, 1],
-                        opacity: [0.8, 1, 0.8]
-                      }}
-                      transition={{ 
-                        duration: 2, 
-                        delay: i * 0.4,
-                        repeat: Infinity, 
-                        repeatType: "reverse" 
-                      }}
-                    />
-                  ))}
+                  {/* Speedmark-inspired element */}
+                  <motion.div 
+                    className="absolute w-64 h-20 bg-[#FF8000] rounded-full"
+                    style={{ clipPath: "polygon(0 50%, 100% 0, 100% 40%, 50% 100%, 0 40%)" }}
+                    animate={{ scale: [1, 1.05, 1] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  ></motion.div>
+                  
+                  {/* Blue accent */}
+                  <motion.div 
+                    className="absolute top-14 w-40 h-10 bg-[#0090D4] rounded-full left-12"
+                    style={{ clipPath: "polygon(0 0, 100% 50%, 100% 100%, 0 50%)" }}
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 2, delay: 0.5, repeat: Infinity }}
+                  ></motion.div>
                 </motion.div>
               </div>
               
-              {/* Name banner */}
-              <div className="absolute bottom-14 left-0 right-0 mx-auto w-max bg-gradient-to-r from-[#FF8000] to-[#0090D4] text-white px-6 py-2 rounded-full shadow-lg">
+              {/* Racing checkerboard pattern */}
+              <div className="absolute bottom-16 left-16 right-16 h-12">
+                <div className="grid grid-cols-8 h-full">
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <div key={i} className={`h-full ${i % 2 === 0 ? 'bg-white' : 'bg-black'}`}></div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Brand name with McLaren typography style */}
+              <div className="absolute top-24 left-0 right-0 mx-auto text-center">
                 <motion.div
-                  className="text-lg font-bold"
+                  className="text-4xl font-bold text-white tracking-widest uppercase"
                   animate={{ opacity: [0.9, 1, 0.9] }}
                   transition={{ duration: 2, repeat: Infinity }}
+                  style={{ textShadow: "0 0 10px rgba(255,128,0,0.8)" }}
+                >
+                  NO.1
+                </motion.div>
+                <motion.div
+                  className="text-2xl font-bold text-[#FF8000] uppercase tracking-wider mt-1"
+                  animate={{ opacity: [0.8, 1, 0.8] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
+                >
+                  ENGINEER
+                </motion.div>
+              </div>
+              
+              {/* Racing number */}
+              <div className="absolute bottom-32 right-8">
+                <motion.div 
+                  className="text-8xl font-bold text-[#FF8000] opacity-60"
+                  animate={{ 
+                    y: [0, -5, 0],
+                    textShadow: ['0 0 8px rgba(255,128,0,0.3)', '0 0 16px rgba(255,128,0,0.6)', '0 0 8px rgba(255,128,0,0.3)']
+                  }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                >
+                  1
+                </motion.div>
+              </div>
+              
+              {/* Name banner in McLaren style */}
+              <div className="absolute bottom-[60px] left-0 right-0 mx-auto w-max">
+                <motion.div
+                  className="bg-black text-white px-8 py-2 border-l-4 border-[#FF8000] text-lg font-bold uppercase tracking-widest"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 4, repeat: Infinity }}
                 >
                   Satwik Loka
                 </motion.div>
@@ -1037,7 +1051,7 @@ export default function HeroSection() {
           <div className="relative w-full">
             {/* Full display of journey animation */}
             <div className="h-[600px] perspective-container mx-auto max-w-5xl">
-              <DigitalNomadJourneyAnimation />
+              <McLarenJourneyAnimation />
             </div>
             
             {/* Instruction text */}
