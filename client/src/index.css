@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css');
 @import url('https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css');
@@ -21,7 +20,7 @@
 
 /* Custom utilities */
 @layer utilities {
-  .text-gradient-telugu {
+  .text-gradient-modern {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#00A19C] via-purple-500 to-blue-600 font-bold;
   }
 }
@@ -57,10 +56,7 @@
       radial-gradient(circle at 0% 100%, rgba(251, 146, 60, 0.05) 0, transparent 25%);
   }
   
-  .font-telugu {
-    font-family: "Baloo Tammudu 2", 'Poppins', system-ui;
-    font-optical-sizing: auto;
-  }
+
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-medium text-slate-800;

@@ -12,7 +12,7 @@ export default function Footer() {
               <span className="text-blue-500">no1</span>.engineer
             </h3>
             <p className="text-gray-300 mb-6">
-              <span className="font-medium">Transforming ideas into innovative solutions. Telugu-English bilingual engineering services.</span>
+              <span className="font-medium">Transforming ideas into innovative solutions. Premium engineering services.</span>
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-blue-500 transition-colors">
@@ -45,26 +45,22 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a href="#" className="text-gray-300 hover:text-blue-500 transition-colors">
-                  <span>Custom Software</span>
-                  <span lang="te" className="sr-only">కస్టమ్ సాఫ్ట్‌వేర్</span>
+                  Custom Software
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-300 hover:text-blue-500 transition-colors">
-                  <span>Mobile Apps</span>
-                  <span lang="te" className="sr-only">మొబైల్ అప్లికేషన్‌లు</span>
+                  Mobile Apps
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-300 hover:text-blue-500 transition-colors">
-                  <span>Cloud Solutions</span>
-                  <span lang="te" className="sr-only">క్లౌడ్ సొల్యూషన్స్</span>
+                  Cloud Solutions
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-300 hover:text-blue-500 transition-colors">
-                  <span>AI & Machine Learning</span>
-                  <span lang="te" className="sr-only">AI & మెషిన్ లెర్నింగ్</span>
+                  AI & Machine Learning
                 </a>
               </li>
             </ul>
@@ -92,7 +88,6 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
           <p>
             <span>&copy; {currentYear} no1.engineer. All rights reserved.</span>
-            <span lang="te" className="sr-only">తెలుగు మరియు ఆంగ్లంలో ఇంజనీరింగ్ సేవలు అందిస్తున్నాము.</span>
           </p>
           <div className="flex justify-center space-x-6 mt-4">
             <a href="#" className="hover:text-blue-500 transition-colors">Privacy Policy</a>
