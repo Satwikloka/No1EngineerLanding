@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Smartphone, Code, Megaphone } from "lucide-react";
 import { fadeIn, slideUp } from "@/lib/framer-animations";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary text-white">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-blue-900 text-white">
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary to-gray-900 opacity-90"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-800 to-purple-900 opacity-90"></div>
         <img
-          src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-          alt="Abstract tech background"
+          src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+          alt="Mobile app development background"
           className="absolute inset-0 w-full h-full object-cover"
         />
       </div>
@@ -23,26 +23,26 @@ export default function HeroSection() {
           variants={fadeIn}
         >
           <motion.h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-bold font-['Montserrat'] text-white mb-4 leading-tight"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight font-telugu"
             variants={slideUp}
           >
-            <span className="text-blue-500">no1</span>.engineer
+            <span className="text-yellow-400">no1</span>.engineer
           </motion.h1>
           
           <motion.p 
-            className="text-xl md:text-2xl text-gray-300 mb-8 italic"
+            className="text-2xl md:text-3xl text-yellow-300 mb-8 font-telugu"
             variants={slideUp}
             custom={1}
           >
-            asamadhiyulu
+            మీ వ్యాపారాన్ని డిజిటల్‌గా మార్చండి
           </motion.p>
           
           <motion.p 
-            className="text-lg md:text-xl text-gray-100 mb-12 max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-gray-100 mb-12 max-w-2xl mx-auto font-telugu"
             variants={slideUp}
             custom={2}
           >
-            Transforming ideas into innovative solutions. Precision engineering for the modern era.
+            అప్లికేషన్ డెవలప్‌మెంట్ మరియు మార్కెటింగ్ సేవలు - మీ వ్యాపారాన్ని ముందుకు తీసుకెళ్లడానికి అవసరమైన అన్ని సేవలు ఒకే చోట
           </motion.p>
           
           <motion.div 
@@ -50,18 +50,45 @@ export default function HeroSection() {
             variants={slideUp}
             custom={3}
           >
-            <Button asChild size="lg" className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600">
-              <a href="#about">
-                Discover More
+            <Button asChild size="lg" className="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-600 text-black font-telugu">
+              <a href="#services">
+                మా సేవలు
               </a>
             </Button>
             
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto border-2 border-white text-white hover:bg-white/10">
+            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto border-2 border-white text-white hover:bg-white/10 font-telugu">
               <a href="#contact">
-                Get in Touch
+                సంప్రదించండి
               </a>
             </Button>
           </motion.div>
+        </motion.div>
+
+        <motion.div
+          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto"
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+          custom={4}
+        >
+          {[
+            { icon: <Smartphone size={24} />, text: "మొబైల్ యాప్‌లు" },
+            { icon: <Code size={24} />, text: "వెబ్ అభివృద్ధి" },
+            { icon: <Megaphone size={24} />, text: "డిజిటల్ మార్కెటింగ్" }
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              className="bg-white/10 backdrop-blur-sm p-4 rounded-lg flex items-center gap-3"
+              whileHover={{ y: -5 }}
+              variants={slideUp}
+              custom={index + 4}
+            >
+              <div className="bg-yellow-500 p-3 rounded-full text-blue-900">
+                {item.icon}
+              </div>
+              <span className="text-white font-telugu text-lg">{item.text}</span>
+            </motion.div>
+          ))}
         </motion.div>
 
         <motion.div 
